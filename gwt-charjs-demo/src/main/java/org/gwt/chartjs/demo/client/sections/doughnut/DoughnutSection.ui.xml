@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:s="urn:import:org.gwt.chartjs.demo.client.sections" xmlns:c="urn:import:org.gwt.chartjs.client">
+	
+	<ui:with type="org.gwt.chartjs.demo.client.resources.ChartDemoResources" field="res" />
+	
+	<s:Section>
+		<div class="{res.sectionStyle.right}">
+			<h2>Doughnut charts</h2>
+			<p>Similar to pie charts, doughnut charts are great for showing proportional data.</p>
+			<p>Chart.js offers the same customisation options as for pie charts, but with a custom sized inner cutout to turn your pies into doughnuts.</p>
+		</div>
+		<c:DoughnutChart pixelWidth="400" pixelHeight="300" />
+	</s:Section>
+</ui:UiBinder> 
