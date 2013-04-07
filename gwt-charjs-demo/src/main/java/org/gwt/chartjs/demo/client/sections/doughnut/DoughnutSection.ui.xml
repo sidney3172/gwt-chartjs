@@ -11,6 +11,6 @@
 			<p>Similar to pie charts, doughnut charts are great for showing proportional data.</p>
 			<p>Chart.js offers the same customisation options as for pie charts, but with a custom sized inner cutout to turn your pies into doughnuts.</p>
 		</div>
-		<c:DoughnutChart pixelWidth="400" pixelHeight="300" />
+		<c:DoughnutChart ui:field="doughnutChart" pixelWidth="400" pixelHeight="300" />
 	</s:Section>
 </ui:UiBinder> 

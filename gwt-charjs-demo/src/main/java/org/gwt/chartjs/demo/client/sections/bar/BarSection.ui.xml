@@ -11,6 +11,6 @@
 			<p>Bar graphs are also great at showing trend data.</p>
 			<p>Chart.js supports bar charts with a load of custom styles and the ability to show multiple bars for each x value.</p>
 		</div>
-		<c:BarChart pixelWidth="400" pixelHeight="300" />
+		<c:BarChart ui:field="barChart" pixelWidth="400" pixelHeight="300" />
 	</s:Section>
 </ui:UiBinder> 

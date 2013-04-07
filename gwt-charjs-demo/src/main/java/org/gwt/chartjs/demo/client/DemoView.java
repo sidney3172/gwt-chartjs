@@ -5,6 +5,10 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * This is a root view of demo application.<br/>
+ * @author sidney3172
+ */
 public class DemoView extends Composite{
 
 	private static DemoViewUiBinder uiBinder = GWT

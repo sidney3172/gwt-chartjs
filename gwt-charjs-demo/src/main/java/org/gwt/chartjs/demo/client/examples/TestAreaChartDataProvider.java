@@ -1,42 +1,28 @@
-package org.gwt.chartjs.client;
+package org.gwt.chartjs.demo.client.examples;
 
 import org.gwt.chartjs.client.data.AreaChartData;
+import org.gwt.chartjs.client.data.AreaChartDataProvider;
 import org.gwt.chartjs.client.data.AreaSeries;
-import org.gwt.chartjs.client.data.Series;
 import org.gwt.chartjs.client.data.SeriesBuilder;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.user.client.Random;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
-public class TestDataCreator {
-	public static AreaChartData get(){
-		return createChartData();
-	}
+public class TestAreaChartDataProvider implements AreaChartDataProvider{
+
+	private AreaChartData data;
 	
-	public static JsArray<Series> getSeries(){
-		JsArray<Series> array = JsArray.createArray().cast();
-		
-		Series series1 = JavaScriptObject.createObject().cast();
-		series1.setColor("#D97041");
-		series1.setValue(Math.random());
-		array.push(series1);
-		
-		Series series2 = JavaScriptObject.createObject().cast();
-		series2.setColor("#C7604C");
-		series2.setValue(Math.random());
-		array.push(series2);
-		
-		Series series3 = JavaScriptObject.createObject().cast();
-		series3.setColor("#21323D");
-		series3.setValue(Math.random());
-		array.push(series3);
-		
-		Series series4 = JavaScriptObject.createObject().cast();
-		series4.setColor("#9D9B7F");
-		series4.setValue(Math.random());
-		array.push(series4);
-		
-		return array;
+	@Override
+	public JavaScriptObject getData() {
+		return data;
+	}
+
+	@Override
+	public void reload(AsyncCallback<AreaChartData> callback) {
+		data = createChartData();
+		callback.onSuccess(data);
 	}
 	
 	private static AreaChartData createChartData(){
@@ -55,7 +41,7 @@ public class TestDataCreator {
 				.withPointColor("rgba(220,220,220,1)")
 				.withPointStrokeColor("#fff")
 				.withData(
-						new double[] { 65, 59, 90, 81, 56, 55, 40 })
+						new double[] { Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400) })
 				.get();
 		series.push(s);
 		series.push(SeriesBuilder
@@ -65,8 +51,8 @@ public class TestDataCreator {
 				.withPointColor("rgba(151,187,205,1)")
 				.withPointStrokeColor("#fff")
 				.withData(
-						new double[] { 28, 48, 40, 19, 96, 27,
-							100 }).get());
+						new double[] { Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400) })
+						.get());
 
 		return series;
 	}

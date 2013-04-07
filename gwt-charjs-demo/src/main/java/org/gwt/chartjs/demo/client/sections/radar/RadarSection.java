@@ -1,7 +1,11 @@
 package org.gwt.chartjs.demo.client.sections.radar;
 
+import org.gwt.chartjs.client.RadarChart;
+import org.gwt.chartjs.demo.client.examples.TestAreaChartDataProvider;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -13,7 +17,10 @@ public class RadarSection extends Composite{
 	interface LineSectionUiBinder extends UiBinder<Widget, RadarSection> {
 	}
 
+	@UiField RadarChart radarChart;
+	
 	public RadarSection() {
 		initWidget(uiBinder.createAndBindUi(this));
+		radarChart.setDataProvider(new TestAreaChartDataProvider());
 	}
 }

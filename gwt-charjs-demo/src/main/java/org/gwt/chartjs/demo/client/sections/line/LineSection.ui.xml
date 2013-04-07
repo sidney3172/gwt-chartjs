@@ -11,6 +11,6 @@
 			<p>Line graphs are probably the most widely used graph for showing trends.</p>
 			<p>Chart.js has a ton of customisation features for line graphs, along with support for multiple datasets to be plotted on one chart.</p>
 		</div>
-		<c:LineChart pixelWidth="400" pixelHeight="300" />
+		<c:LineChart ui:field="lineChart" pixelWidth="400" pixelHeight="300" />
 	</s:Section>
 </ui:UiBinder> 
