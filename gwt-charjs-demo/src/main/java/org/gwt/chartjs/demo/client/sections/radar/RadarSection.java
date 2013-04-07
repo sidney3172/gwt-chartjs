@@ -1,7 +1,7 @@
 package org.gwt.chartjs.demo.client.sections.radar;
 
 import org.gwt.chartjs.client.RadarChart;
-import org.gwt.chartjs.demo.client.examples.TestAreaChartDataProvider;
+import org.gwt.chartjs.demo.client.TestAreaChartDataProvider;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

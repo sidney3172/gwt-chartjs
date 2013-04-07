@@ -1,4 +1,4 @@
-package org.gwt.chartjs.demo.client.examples;
+package org.gwt.chartjs.demo.client;
 
 import org.gwt.chartjs.client.data.AreaChartData;
 import org.gwt.chartjs.client.data.AreaChartDataProvider;
@@ -13,7 +13,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 public class TestAreaChartDataProvider implements AreaChartDataProvider{
 
 	private AreaChartData data;
-	
+
 	@Override
 	public JavaScriptObject getData() {
 		return data;
@@ -24,14 +24,14 @@ public class TestAreaChartDataProvider implements AreaChartDataProvider{
 		data = createChartData();
 		callback.onSuccess(data);
 	}
-	
+
 	private static AreaChartData createChartData(){
 		AreaChartData data = JavaScriptObject.createObject().cast();
 		data.setLabels(new String[] {"January","February","March","April","May","June","July"});
 		data.setSeries(createSeries());
 		return data;
 	}
-	
+
 	private static JsArray<AreaSeries> createSeries() {
 		JsArray<AreaSeries> series = JavaScriptObject.createArray().cast();
 		AreaSeries s = SeriesBuilder

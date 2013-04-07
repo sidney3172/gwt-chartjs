@@ -1,7 +1,7 @@
 package org.gwt.chartjs.demo.client.sections.line;
 
 import org.gwt.chartjs.client.LineChart;
-import org.gwt.chartjs.demo.client.examples.TestAreaChartDataProvider;
+import org.gwt.chartjs.demo.client.TestAreaChartDataProvider;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

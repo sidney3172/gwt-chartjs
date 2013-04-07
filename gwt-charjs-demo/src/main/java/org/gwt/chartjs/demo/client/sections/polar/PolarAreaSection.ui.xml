@@ -11,6 +11,6 @@
 			<p>Polar area charts are similar to pie charts, but the variable isn't the circumference of the segment, but the radius of it.</p>
 			<p>Chart.js delivers animated polar area charts with custom coloured segments, along with customisable scales and animation.</p>
 		</div>
-		<c:PolarAreaChart ui:field="polarAreaChart" pixelWidth="400" pixelHeight="300" />
+		<c:PolarAreaChart ui:field="polarAreaChart" pixelWidth="480" pixelHeight="300" />
 	</s:Section>
 </ui:UiBinder> 

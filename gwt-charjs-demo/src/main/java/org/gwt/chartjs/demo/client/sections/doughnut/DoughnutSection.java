@@ -1,7 +1,7 @@
 package org.gwt.chartjs.demo.client.sections.doughnut;
 
 import org.gwt.chartjs.client.DoughnutChart;
-import org.gwt.chartjs.demo.client.examples.TestPieCharDataProvider;
+import org.gwt.chartjs.demo.client.TestPieChartDataProvider;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -21,6 +21,6 @@ public class DoughnutSection extends Composite{
 	
 	public DoughnutSection() {
 		initWidget(uiBinder.createAndBindUi(this));
-		doughnutChart.setDataProvider(new TestPieCharDataProvider());
+		doughnutChart.setDataProvider(new TestPieChartDataProvider());
 	}
 }

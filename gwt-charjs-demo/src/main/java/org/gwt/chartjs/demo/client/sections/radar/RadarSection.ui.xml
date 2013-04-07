@@ -11,6 +11,6 @@
 			<p>Radar charts are good for comparing a selection of different pieces of data.</p>
 			<p>Chart.js supports multiple data sets plotted on the same radar chart. It also supports all of the customisation and animation options you'd expect.</p>
 		</div>
-		<c:RadarChart ui:field="radarChart" pixelWidth="400" pixelHeight="300" />
+		<c:RadarChart ui:field="radarChart" pixelWidth="480" pixelHeight="300" />
 	</s:Section>
 </ui:UiBinder> 

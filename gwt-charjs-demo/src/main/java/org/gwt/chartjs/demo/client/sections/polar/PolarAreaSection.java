@@ -1,7 +1,7 @@
 package org.gwt.chartjs.demo.client.sections.polar;
 
 import org.gwt.chartjs.client.PolarAreaChart;
-import org.gwt.chartjs.demo.client.examples.TestPieCharDataProvider;
+import org.gwt.chartjs.demo.client.TestPieChartDataProvider;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -21,6 +21,6 @@ public class PolarAreaSection extends Composite{
 	
 	public PolarAreaSection() {
 		initWidget(uiBinder.createAndBindUi(this));
-		polarAreaChart.setDataProvider(new TestPieCharDataProvider());
+		polarAreaChart.setDataProvider(new TestPieChartDataProvider());
 	}
 }

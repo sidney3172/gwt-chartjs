@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+
+.example {
+	width: 978px;
+	margin: 40px auto;
+}
+
+.example:before {
+	content: '';
+	width: 600px;
+	margin: 0 auto;
+	border-top: 1px solid #ebebeb;
+	height: 20px;
+	display: block;
+}
+
+.example:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+.left{
+	width: 50%;
+	float: left;
+}
+
+.right{
+	width: 50%;
+	float: right;
+}
+.example p{
+	margin-top: 10px;
+	line-height: 24px;
+	font-size: 18px;
+	color: #767c8d;
+}

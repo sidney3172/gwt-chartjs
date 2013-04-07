@@ -8,5 +8,4 @@ public interface ChartDemoResources extends ClientBundle{
 	
 	@Source("css/section.css")
 	SectionStyle sectionStyle();
-	
 }

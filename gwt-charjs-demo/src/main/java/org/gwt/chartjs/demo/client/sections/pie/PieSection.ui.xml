@@ -11,6 +11,6 @@
 			<p>Pie charts are great at comparing proportions within a single data set.</p>
 			<p>Chart.js shows animated pie charts with customisable colours, strokes, animation easing and effects.</p>
 		</div>
-		<c:PieChart ui:field="pieChart" pixelWidth="400" pixelHeight="300" />
+		<c:PieChart ui:field="pieChart" pixelWidth="480" pixelHeight="300" />
 	</s:Section>
 </ui:UiBinder> 

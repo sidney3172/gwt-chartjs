@@ -1,7 +1,7 @@
 package org.gwt.chartjs.demo.client.sections.pie;
 
 import org.gwt.chartjs.client.PieChart;
-import org.gwt.chartjs.demo.client.examples.TestPieCharDataProvider;
+import org.gwt.chartjs.demo.client.TestPieChartDataProvider;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -21,6 +21,6 @@ public class PieSection extends Composite{
 
 	public PieSection() {
 		initWidget(uiBinder.createAndBindUi(this));
-		pieChart.setDataProvider(new TestPieCharDataProvider());
+		pieChart.setDataProvider(new TestPieChartDataProvider());
 	}
 }
