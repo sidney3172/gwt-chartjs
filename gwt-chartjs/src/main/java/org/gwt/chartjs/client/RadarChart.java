@@ -24,7 +24,7 @@ public class RadarChart extends Chart{
 	}
 	
 	private native void drawRadar(Element canvas, JavaScriptObject data, boolean scaleShowLabels)/*-{
-		var myLine = new Chart(canvas.getContext("2d")).Radar(data,{scaleShowLabels : scaleShowLabels, pointLabelFontSize : 10});
+		var myLine = new $wnd.Chart(canvas.getContext("2d")).Radar(data,{scaleShowLabels : scaleShowLabels, pointLabelFontSize : 10});
 	}-*/;
 
 	@Override

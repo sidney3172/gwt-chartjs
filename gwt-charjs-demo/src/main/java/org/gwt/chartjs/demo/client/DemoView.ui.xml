@@ -144,8 +144,8 @@
 				<h2>Lightweight chart library for you Google Web Toolkit project</h2>
 			</hgroup>
 
-			<a href="#getting_started" class="{style.button} {style.red}">Getting Started</a>
-			<a href="#" class="{style.button} {style.blue}">Download</a>
+			<a href="http://54.228.186.5/docs" class="{style.button} {style.red}">Getting Started</a>
+			<a href="https://github.com/sindey3172/gwt-chartjs" class="{style.button} {style.blue}">Download</a>
 		</header>
 		
 		<l:LineSection></l:LineSection>

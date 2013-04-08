@@ -54,8 +54,8 @@ public abstract class Chart extends SimplePanel {
 
 	@Override
 	protected void onAttach() {
-		super.onAttach();
 		ChartJs.ensureInjected();
+		super.onAttach();
 		draw();
 	}
 

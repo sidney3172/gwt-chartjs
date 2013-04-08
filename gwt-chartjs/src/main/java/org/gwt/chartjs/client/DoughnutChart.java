@@ -20,7 +20,7 @@ public class DoughnutChart extends Chart{
 	}
 	
 	private native void drawDoughnut(Element canvas, JavaScriptObject data)/*-{
-		var myLine = new Chart(canvas.getContext("2d")).Doughnut(data);
+		var myLine = new $wnd.Chart(canvas.getContext("2d")).Doughnut(data);
 	}-*/;
 
 	@Override

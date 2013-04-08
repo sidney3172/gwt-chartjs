@@ -13,4 +13,6 @@ public interface DocViewStyle extends CssResource{
 	
 	String navigation();
 	String content();
+	
+	String section();
 }

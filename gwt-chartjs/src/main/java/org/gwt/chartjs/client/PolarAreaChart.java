@@ -19,7 +19,7 @@ public class PolarAreaChart extends Chart{
 	}
 	
 	private native void drawPolarArea(Element canvas, JavaScriptObject data)/*-{
-		var myLine = new Chart(canvas.getContext("2d")).PolarArea(data);
+		var myLine = new $wnd.Chart(canvas.getContext("2d")).PolarArea(data);
 	}-*/;
 
 	@Override

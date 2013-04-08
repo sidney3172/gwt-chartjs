@@ -19,7 +19,7 @@ public class PieChart extends Chart{
 	}
 	
 	private native void drawPie(Element canvas, JavaScriptObject data)/*-{
-		var myLine = new Chart(canvas.getContext("2d")).Pie(data);
+		var myLine = new $wnd.Chart(canvas.getContext("2d")).Pie(data);
 	}-*/;
 
 	@Override

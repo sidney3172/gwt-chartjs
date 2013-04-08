@@ -19,7 +19,7 @@ public class LineChart extends Chart{
 	}
 	
 	private native void drawLine(Element canvas, JavaScriptObject data)/*-{
-		var myLine = new Chart(canvas.getContext("2d")).Line(data);
+		var a = new $wnd.Chart(canvas.getContext("2d")).Line(data);
 	}-*/;
 
 	@Override

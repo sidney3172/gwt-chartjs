@@ -20,11 +20,11 @@ public final class ChartJs {
 	public static void ensureInjected(){
 		if(injected)
 			return;
-		
+		GWT.log("+");
 		Resources res = GWT.create(Resources.class);
 		String source = res.chartJsSource().getText();
 		eval(source);
-		
+		injected = true;
 	}
 	
 	private static native void eval(String source)/*-{

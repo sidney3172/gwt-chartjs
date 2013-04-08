@@ -19,7 +19,7 @@ public class BarChart extends Chart{
 	}
 	
 	private native void drawBar(Element canvas, JavaScriptObject data)/*-{
-		var myLine = new Chart(canvas.getContext("2d")).Bar(data);
+		var myLine = new $wnd.Chart(canvas.getContext("2d")).Bar(data);
 	}-*/;
 
 	@Override

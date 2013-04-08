@@ -1,0 +1,21 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:d="urn:import:org.gwt.chartjs.doc.client" xmlns:c="urn:import:org.gwt.chartjs.client">
+	
+	<d:Section>
+		<h2>Linear chart</h2>
+		<h3>Introduction</h3>
+		<p>A line chart is a way of plotting data points on a line.</p>
+		<p>Often, it is used to show trend data, and the comparison of two data sets.</p>
+		
+		<h3>Example usage</h3>
+		<c:LineChart ui:field="lineChart" pixelWidth="500" pixelHeight="300"/>
+		
+		<h3>Data structure</h3>
+		<p>TODO data providers</p>
+		<p>The line chart requires an array of labels for each of the data points. This is show on the X axis.</p>
+		<p>The data for line charts is broken up into an array of datasets. Each dataset has a colour for the fill, a colour for the line and colours for the points and strokes of the points. These colours are strings just like CSS. You can use RGBA, RGB, HEX or HSL notation.</p>
+		
+		<h3>Chart options</h3>
+	</d:Section>
+</ui:UiBinder> 

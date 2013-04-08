@@ -1,7 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
-	xmlns:c="urn:import:org.gwt.chartjs.client">
+	xmlns:c="urn:import:org.gwt.chartjs.client" xmlns:s="urn:import:org.gwt.chartjs.doc.client.start" xmlns:l="urn:import:org.gwt.chartjs.doc.client.linear">
 	
 	<ui:with type="org.gwt.chartjs.doc.client.resources.ChartDocResources" field="res" />
 	
@@ -58,7 +58,8 @@
 		<div class="{res.docStyle.content}">
 			<h1>GWT-Chart.js Documentation</h1>
 			<h2>Examples of use</h2>
-			This is content
+			<s:GettingStartedView></s:GettingStartedView>
+			<l:LinearChartView></l:LinearChartView>
 		</div>
 	</g:HTMLPanel>
 </ui:UiBinder> 
