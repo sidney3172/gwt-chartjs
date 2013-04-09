@@ -8,7 +8,7 @@
 	xmlns:r="urn:import:org.gwt.chartjs.demo.client.sections.radar" 
 	xmlns:p="urn:import:org.gwt.chartjs.demo.client.sections.pie" 
 	xmlns:polar="urn:import:org.gwt.chartjs.demo.client.sections.polar" 
-	xmlns:d="urn:import:org.gwt.chartjs.demo.client.sections.doughnut">
+	xmlns:d="urn:import:org.gwt.chartjs.demo.client.sections.doughnut" xmlns:Cha="urn:import:java.awt">
 	
 	<ui:style>
 		body{
@@ -129,6 +129,24 @@
 			font-size: 16px;
 			padding: 20px 0;
 		}
+		
+		.titleChart{
+			position: absolute;
+			height: 246px;
+			margin-bottom: 0px;
+			margin-left: 0px;
+			margin-right: 0px;
+			margin-top: 0px;
+			padding-bottom: 0px;
+			padding-left: 0px;
+			padding-right: 0px;
+			padding-top: 0px;
+			position: absolute;
+			right: 0px;
+			text-rendering: optimizelegibility;
+			top: 60px;
+			width: 489px;			
+		}
 	</ui:style>
 
 	<g:HTMLPanel stylePrimaryName="{style.root}">
@@ -143,7 +161,7 @@
 				<h1>GWT Chart.js</h1>
 				<h2>Lightweight chart library for you Google Web Toolkit project</h2>
 			</hgroup>
-
+			<c:LineChart styleName="{style.titleChart}" pixelWidth="489" pixelHeight="246"  ui:field="titleChart"/>
 			<a href="http://54.228.186.5/docs" class="{style.button} {style.red}">Getting Started</a>
 			<a href="https://github.com/sindey3172/gwt-chartjs" class="{style.button} {style.blue}">Download</a>
 		</header>
