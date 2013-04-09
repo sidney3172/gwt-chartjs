@@ -17,10 +17,9 @@ public final class ChartJs {
 	 * Method injecting native chart.js code into the browser<br/>
 	 * In case code already been injected do nothing
 	 */
-	public static void ensureInjected(){
+	public static void ensureInjected(){ //TODO: do real injection (lazy loading)
 		if(injected)
 			return;
-		GWT.log("+");
 		Resources res = GWT.create(Resources.class);
 		String source = res.chartJsSource().getText();
 		eval(source);
