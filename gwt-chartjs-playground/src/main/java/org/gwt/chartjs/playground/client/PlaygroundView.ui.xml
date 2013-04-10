@@ -1,0 +1,32 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:org.gwt.chartjs.client">
+
+	<ui:with type="org.gwt.chartjs.playground.client.resources.ChartDocResources"
+		field="res" />
+
+	<g:HTMLPanel stylePrimaryName="{res.docStyle.root}">
+		<div style="position:fixed; top:0;left:0;right:0; height: 16px;">
+			<div class="{res.docStyle.redColor}" />
+			<div class="{res.docStyle.greenColor}" />
+			<div class="{res.docStyle.yellowColor}" />
+		</div>
+		<div class="{res.docStyle.content}">
+			<h1>GWT-Chartjs playground</h1>
+			<h2>You can play with options for each type of chart</h2>
+			<br/>
+			<div style="text-align: center;">
+				<a href="#line" class="{res.docStyle.button} line" />
+				<a href="#bar" class="{res.docStyle.button} bar"/>
+				<a href="#radar" class="{res.docStyle.button} radar" />
+				<a href="#pie" class="{res.docStyle.button}" />
+				<a href="#polar" class="{res.docStyle.button}" />
+				<a href="#doughnut" class="{res.docStyle.button}" />
+			</div>
+			<g:HTMLPanel stylePrimaryName="{res.docStyle.chartPlaceholder}">
+				chart placeholder
+			</g:HTMLPanel>
+			<g:HTMLPanel stylePrimaryName="{res.docStyle.optionsPane}">options</g:HTMLPanel>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

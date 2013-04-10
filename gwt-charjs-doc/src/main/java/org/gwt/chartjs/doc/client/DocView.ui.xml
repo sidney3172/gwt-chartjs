@@ -46,6 +46,10 @@
 				<dd><a href="#">Example usage</a></dd>
 				<dd><a href="#">Data structure</a></dd>
 				<dd><a href="#">Chart options</a></dd>
+			<dt><a href="#">Chart options</a></dt>
+				<dd><a href="#">Animation options</a></dd>
+				<dd><a href="#">Point options</a></dd>
+				<dd><a href="#">Scale options</a></dd>
 			<dt><a href="#">General issues</a></dt>
 				<dd><a href="#">Chart interactivity</a></dd>
 				<dd><a href="#">Browser support</a></dd>

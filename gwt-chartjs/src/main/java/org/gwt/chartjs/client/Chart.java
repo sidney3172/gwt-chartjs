@@ -1,5 +1,10 @@
 package org.gwt.chartjs.client;
 
+import org.gwt.chartjs.client.event.AnimationCompleteEvent;
+import org.gwt.chartjs.client.event.AnimationCompleteHandler;
+import org.gwt.chartjs.client.event.HasAnimationCompleteHandlers;
+import org.gwt.chartjs.client.options.animation.AnimationOptions;
+import org.gwt.chartjs.client.options.animation.HasAnimation;
 import org.gwt.chartjs.client.resources.ChartStyle;
 import org.gwt.chartjs.client.resources.Resources;
 
@@ -14,12 +19,16 @@ import com.google.gwt.user.client.ui.SimplePanel;
  * @author sidney3172
  *
  */
-public abstract class Chart extends SimplePanel {
+public abstract class Chart extends SimplePanel implements HasAnimationCompleteHandlers, HasAnimation{
 
 	private static Resources resources;
 	
+	private boolean animationEnabled = true;
+	protected AnimationOptions animationOptions;
+	
 	protected CanvasElement canvas;
 	protected ChartStyle style;
+	
 	
 	static{
 		resources = GWT.create(Resources.class);
@@ -92,5 +101,27 @@ public abstract class Chart extends SimplePanel {
 	 */
 	public void setPixelHeight(int height) {
 		canvas.setHeight(height);
+	}
+	
+	@Override
+	public void addAnimationCompleteHandler(AnimationCompleteHandler handler) {
+		addHandler(handler, AnimationCompleteEvent.getType());
+	}
+	
+	@Override
+	public void setAnimationEnabled(boolean enable) {
+		
+	}
+	
+	@Override
+	public boolean isAnimationEnabled() {
+		return animationEnabled;
+	}
+	
+	@Override
+	public void setAnimationOptions(AnimationOptions options) {
+		this.animationOptions = options;
+		if(animationEnabled && animationOptions == null)
+			animationOptions = new AnimationOptions();
 	}
 }

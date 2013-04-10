@@ -10,12 +10,20 @@
 		
 		<h3>Example usage</h3>
 		<c:LineChart ui:field="lineChart" pixelWidth="500" pixelHeight="300"/>
-		
+
 		<h3>Data structure</h3>
 		<p>TODO data providers</p>
 		<p>The line chart requires an array of labels for each of the data points. This is show on the X axis.</p>
 		<p>The data for line charts is broken up into an array of datasets. Each dataset has a colour for the fill, a colour for the line and colours for the points and strokes of the points. These colours are strings just like CSS. You can use RGBA, RGB, HEX or HSL notation.</p>
 		
 		<h3>Chart options</h3>
+		<p>Line chart support next chart options:
+			<ul>
+				<li><a href="#">Point options</a></li>
+				<li><a href="#">Animation options</a></li>
+				<li><a href="#">Scale options</a></li>
+				<li><a href="#">Dataset options</a></li>
+			</ul> 
+		</p>
 	</d:Section>
 </ui:UiBinder> 

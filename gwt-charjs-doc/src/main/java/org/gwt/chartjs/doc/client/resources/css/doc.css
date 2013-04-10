@@ -132,6 +132,10 @@ body {
 	clear: both;
 }
 
+.section h3{
+	margin-top: 20px;	
+}
+
 .section p{
 	margin-top: 10px;
 	line-height: 24px;
