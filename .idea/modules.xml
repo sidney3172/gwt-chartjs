@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gwt-chartjs/gwt-chartjs.iml" filepath="$PROJECT_DIR$/gwt-chartjs/gwt-chartjs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gwt-chartjs-demo/gwt-chartjs-demo.iml" filepath="$PROJECT_DIR$/gwt-chartjs-demo/gwt-chartjs-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gwt-chartjs-doc/gwt-chartjs-doc.iml" filepath="$PROJECT_DIR$/gwt-chartjs-doc/gwt-chartjs-doc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gwt-chartjs-playground/gwt-chartjs-playground.iml" filepath="$PROJECT_DIR$/gwt-chartjs-playground/gwt-chartjs-playground.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gwt-chartjs-root.iml" filepath="$PROJECT_DIR$/gwt-chartjs-root.iml" />
+    </modules>
+  </component>
+</project>
+

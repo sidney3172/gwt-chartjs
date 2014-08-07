@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="gwt-chartjs-demo:war exploded">
+    <output-path>$PROJECT_DIR$/gwt-chartjs-demo/target/gwt-chartjs-demo-0.0.2-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="gwt-chartjs-demo/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="gwt-chartjs-demo" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="gwt-chartjs-0.0.2-SNAPSHOT.jar">
+            <element id="module-output" name="gwt-chartjs" />
+          </element>
+        </element>
+      </element>
+      <element id="gwt-compiler-output" facet="gwt-chartjs-demo/gwt/GWT" />
+    </root>
+  </artifact>
+</component>

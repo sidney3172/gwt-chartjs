@@ -7,7 +7,7 @@
 
   <welcome-file-list>
     <welcome-file>
-      demo.html
+      index.html
     </welcome-file>
   </welcome-file-list>
 </web-app>

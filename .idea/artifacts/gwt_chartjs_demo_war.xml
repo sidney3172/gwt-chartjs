@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="gwt-chartjs-demo:war">
+    <output-path>$PROJECT_DIR$/gwt-chartjs-demo/target</output-path>
+    <root id="archive" name="gwt-chartjs-demo-0.0.2-SNAPSHOT.war">
+      <element id="artifact" artifact-name="gwt-chartjs-demo:war exploded" />
+    </root>
+  </artifact>
+</component>

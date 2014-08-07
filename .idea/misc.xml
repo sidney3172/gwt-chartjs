@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="gwt" url="file://$PROJECT_DIR$/gwt-chartjs-demo" />
+    <file type="gwt" url="file://$PROJECT_DIR$/gwt-chartjs-doc" />
+    <file type="gwt" url="file://$PROJECT_DIR$/gwt-chartjs-playground" />
+    <file type="web" url="file://$PROJECT_DIR$/gwt-chartjs-demo" />
+    <file type="web" url="file://$PROJECT_DIR$/gwt-chartjs-doc" />
+    <file type="web" url="file://$PROJECT_DIR$/gwt-chartjs-playground" />
+  </component>
+  <component name="IdProvider" IDEtalkID="86B20F46710722D925C7A7A71D5A3FFF" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
+
