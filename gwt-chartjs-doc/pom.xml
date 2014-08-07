@@ -73,13 +73,6 @@
 				<configuration>
 					<webappDirectory>${webappDirectory}</webappDirectory>
 					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
-					<webResources>
-						<resource>
-							<targetPath>resources</targetPath>
-							<directory>src/main/resources</directory>
-						</resource>
-					</webResources>
-					
 				</configuration>
 			</plugin>
 			<plugin>
