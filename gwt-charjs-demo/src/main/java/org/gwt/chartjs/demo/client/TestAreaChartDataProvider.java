@@ -14,12 +14,10 @@ public class TestAreaChartDataProvider implements AreaChartDataProvider{
 
 	private AreaChartData data;
 
-	@Override
 	public JavaScriptObject getData() {
 		return data;
 	}
 
-	@Override
 	public void reload(AsyncCallback<AreaChartData> callback) {
 		data = createChartData();
 		callback.onSuccess(data);

@@ -2,7 +2,8 @@ package org.gwt.chartjs.client;
 
 import org.gwt.chartjs.client.resources.Resources;
 
-import com.google.gwt.core.shared.GWT;
+import com.google.gwt.core.client.GWT;
+
 
 /**
  * Utility class which helps to inject native chart.js code into browser

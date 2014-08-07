@@ -25,14 +25,14 @@ public class LineChart extends Chart{
 	@Override
 	public void update() {
 		if(provider == null)
-			throw new NullPointerException("Data provider is not spicified before calling update()");
+			throw new NullPointerException("Data provider is not specified before calling update()");
 		drawLine(canvas, provider.getData());
 	}
 
 	@Override
 	public void reload() {
 		if(provider == null)
-			throw new NullPointerException("Data provider is not spicified before calling reload()");
+			throw new NullPointerException("Data provider is not specified before calling reload()");
 		//TODO: show some king of loading to user
 		provider.reload(new AsyncCallback<AreaChartData>() {
 			
