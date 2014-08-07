@@ -3,7 +3,7 @@
 .settings/
 .classpath
 .project
-
+.DS_Store
 #idea garbage
 *.iml
 .idea/
