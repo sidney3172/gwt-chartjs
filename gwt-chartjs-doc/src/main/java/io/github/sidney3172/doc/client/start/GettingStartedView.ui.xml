@@ -1,0 +1,13 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:d="urn:import:io.github.sidney3172.doc.client">
+	
+	<d:Section>
+		<h2>Getting started</h2>
+		<h3>Inlude gwt-chartjs</h3>
+		<p>Gwt-chartjs library available at Maven Central, so if you use Maven as a build system just add new dependency to your project</p>
+		
+		<h3>Setup GWT project</h3>
+		<p>To make this library available in your GWT project add inherit tag to your .gwt.xml file</p>
+	</d:Section>
+</ui:UiBinder> 

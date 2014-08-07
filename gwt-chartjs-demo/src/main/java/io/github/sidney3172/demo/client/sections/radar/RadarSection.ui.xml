@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:s="urn:import:io.github.sidney3172.demo.client.sections" xmlns:c="urn:import:io.github.sidney3172.client">
+	
+	<ui:with type="io.github.sidney3172.demo.client.resources.ChartDemoResources" field="res" />
+	
+	<s:Section>
+		<div class="{res.sectionStyle.left}">
+			<h2>Radar charts</h2>
+			<p>Radar charts are good for comparing a selection of different pieces of data.</p>
+			<p>Chart.js supports multiple data sets plotted on the same radar chart. It also supports all of the customisation and animation options you'd expect.</p>
+		</div>
+		<c:RadarChart ui:field="radarChart" pixelWidth="480" pixelHeight="300" />
+	</s:Section>
+</ui:UiBinder> 

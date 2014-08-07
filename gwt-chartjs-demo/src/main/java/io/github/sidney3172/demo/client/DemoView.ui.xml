@@ -1,0 +1,186 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:l="urn:import:io.github.sidney3172.demo.client.sections.line"
+	xmlns:b="urn:import:io.github.sidney3172.demo.client.sections.bar"
+	xmlns:c="urn:import:io.github.sidney3172.client"
+	xmlns:r="urn:import:io.github.sidney3172.demo.client.sections.radar"
+	xmlns:p="urn:import:io.github.sidney3172.demo.client.sections.pie"
+	xmlns:polar="urn:import:io.github.sidney3172.demo.client.sections.polar"
+	xmlns:d="urn:import:io.github.sidney3172.demo.client.sections.doughnut">
+	
+	<ui:style>
+		body{
+			padding:0;
+			margin:0;
+			font-family: 'Noto Sans', sans-serif !important;
+		}
+		.root {
+			position: static !important;
+			overflow: visible;
+			border-top: 8px #282b36 solid;
+			color: #282b36;
+		}
+		
+		.root * {
+			color: #282b36;
+			adding: 0;
+			margin: 0;
+			color: inherit;
+			-webkit-font-smoothing: antialiased;
+			text-rendering: optimizeLegibility;
+		}
+		
+		.redColor,.greenColor,.yellowColor {
+			width: 33.33%;
+			float: left;
+			height: 8px;
+		}
+		
+		.redColor {
+			background-color: #f33e6f;
+		}
+		
+		.greenColor {
+			background-color: #46bfbd;
+		}
+		
+		.yellowColor {
+			background-color: #fdb45c;
+		}
+		
+		.header {
+			width: 978px;
+			margin: 20px auto;
+			display: block;
+			position: relative;
+		}
+
+        .content {
+            width: 978px;
+            margin: 0px auto;
+        }
+		
+		.hgroup h1 {
+			font-weight: 600;
+			font-size: 55px;
+			margin-top: 40px;
+		}
+		
+		.hgroup h2 {
+			font-weight: 400;
+			margin-top: 20px;
+			font-size: 26px;
+			line-height: 40px;
+		}
+		
+		.hgroup {
+			width: 50%;
+			padding: 20px 0;
+		}
+		
+		.button {
+			display: inline-block;
+			padding: 20px;
+			font-weight: 600;
+			color: #fff;
+			text-decoration: none;
+			border-radius: 5px;
+			text-align: center;
+			font-size: 18px;
+			-webkit-transition-property: background-color box-shadow;
+			-webkit-transition-duration: 200ms;
+			-webkit-transition-timing-function: ease-in-out;
+			-moz-transition-property: background-color box-shadow;
+			-moz-transition-duration: 200ms;
+			-moz-transition-timing-function: ease-in-out;
+			-ms-transition-property: background-color box-shadow;
+			-ms-transition-duration: 200ms;
+			-ms-transition-timing-function: ease-in-out;
+			-o-transition-property: background-color box-shadow;
+			-o-transition-duration: 200ms;
+			-o-transition-timing-function: ease-in-out;
+			transition-property: background-color box-shadow;
+			transition-duration: 200ms;
+			transition-timing-function: ease-in-out;
+			margin-right: 10px;
+			width: 180px;
+		}
+		
+		.button:ACTIVE{
+			box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.25);
+		}
+		
+		.red{
+			background-color: #f33e6f;
+		}
+		.red:hover {
+  			background-color: #f2265d;
+		}
+		.blue{
+			background-color: #2d91ea;
+		}
+		.blue:hover{
+			background-color: #1785e6;
+		}
+		
+		.footer{
+			width: 100%;
+			text-align: center;
+			background-color: #ebebeb;
+			color: #767c8d;
+			
+			font-size: 16px;
+			padding: 20px 0;
+		}
+		
+		.titleChart{
+			position: absolute;
+			height: 246px;
+			margin-bottom: 0px;
+			margin-left: 0px;
+			margin-right: 0px;
+			margin-top: 0px;
+			padding-bottom: 0px;
+			padding-left: 0px;
+			padding-right: 0px;
+			padding-top: 0px;
+			position: absolute;
+			right: 0px;
+			text-rendering: optimizelegibility;
+			top: 60px;
+			width: 489px;			
+		}
+	</ui:style>
+
+	<g:HTMLPanel stylePrimaryName="{style.root}">
+		<div>
+			<div class="{style.redColor}" />
+			<div class="{style.greenColor}" />
+			<div class="{style.yellowColor}" />
+		</div>
+
+		<header class="{style.header}">
+			<hgroup class="{style.hgroup}">
+				<h1>GWT Chart.js</h1>
+				<h2>Lightweight chart library for you Google Web Toolkit project</h2>
+			</hgroup>
+			<c:LineChart styleName="{style.titleChart}" pixelWidth="489" pixelHeight="246"  ui:field="titleChart"/>
+			<a href="doc.html" class="{style.button} {style.red}">Getting Started</a>
+			<a href="https://github.com/sidney3172/gwt-chartjs" class="{style.button} {style.blue}">Download</a>
+		</header>
+
+        <div class="{style.content}">
+
+            <l:LineSection></l:LineSection>
+            <b:BarSection></b:BarSection>
+            <r:RadarSection></r:RadarSection>
+            <p:PieSection></p:PieSection>
+            <polar:PolarAreaSection></polar:PolarAreaSection>
+            <d:DoughnutSection></d:DoughnutSection>
+		</div>
+		<footer class="{style.footer}">
+			Original project and design <a href="http://www.chartjs.org">Chart.Js</a> created by <a href="http://www.nickdownie.com">Nick Downie</a> 
+		</footer>
+	</g:HTMLPanel>
+</ui:UiBinder> 

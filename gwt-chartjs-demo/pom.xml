@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<parent>
-		<groupId>org.gwt.chartjs</groupId>
+		<groupId>io.github.sidney3172</groupId>
 		<artifactId>gwt-chartjs-root</artifactId>
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.gwt.chartjs</groupId>
+	<groupId>io.github.sidney3172</groupId>
 	<artifactId>gwt-chartjs-demo</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
 	<packaging>war</packaging>
@@ -35,7 +35,7 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.gwt.chartjs</groupId>
+			<groupId>io.github.sidney3172</groupId>
 			<artifactId>gwt-chartjs</artifactId>
 			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
