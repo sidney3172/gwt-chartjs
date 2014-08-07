@@ -27,8 +27,8 @@
 	<modules>
 		<module>gwt-chartjs</module>			
 		<module>gwt-chartjs-playground</module>
-		<module>gwt-charjs-demo</module>
-		<module>gwt-charjs-doc</module>
+		<module>gwt-chartjs-demo</module>
+		<module>gwt-chartjs-doc</module>
 	</modules>
 	
 </project>
