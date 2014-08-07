@@ -4,5 +4,8 @@
 .classpath
 .project
 
+#idea garbage
+*.iml
+.idea/
 #maven target directories
 target/
