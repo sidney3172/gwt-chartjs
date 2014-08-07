@@ -5,7 +5,6 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 public class DemoEntryPoint implements EntryPoint{
 
-	@Override
 	public void onModuleLoad() {
 		RootPanel.get().add(new DemoView());
 	}

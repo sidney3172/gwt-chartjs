@@ -2,7 +2,7 @@ package org.gwt.chartjs.doc.client;
 
 import org.gwt.chartjs.doc.client.resources.ChartDocResources;
 
-import com.google.gwt.core.shared.GWT;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.user.client.ui.HTMLPanel;
 

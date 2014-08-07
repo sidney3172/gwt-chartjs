@@ -162,8 +162,8 @@
 				<h2>Lightweight chart library for you Google Web Toolkit project</h2>
 			</hgroup>
 			<c:LineChart styleName="{style.titleChart}" pixelWidth="489" pixelHeight="246"  ui:field="titleChart"/>
-			<a href="http://54.228.186.5/docs" class="{style.button} {style.red}">Getting Started</a>
-			<a href="https://github.com/sindey3172/gwt-chartjs" class="{style.button} {style.blue}">Download</a>
+			<a href="http://localhost:8080/gwt-chartjs-doc-0.0.2-SNAPSHOT/" class="{style.button} {style.red}">Getting Started</a>
+			<a href="https://github.com/stephlag/gwt-chartjs" class="{style.button} {style.blue}">Download</a>
 		</header>
 		
 		<l:LineSection></l:LineSection>

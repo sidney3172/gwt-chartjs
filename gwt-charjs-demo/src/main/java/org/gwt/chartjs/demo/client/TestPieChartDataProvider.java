@@ -11,12 +11,10 @@ public class TestPieChartDataProvider implements PieChartDataProvider{
 
 	private JsArray<Series> data;
 
-	@Override
 	public JsArray<Series> getData() {
 		return data;
 	}
 
-	@Override
 	public void reload(AsyncCallback<JsArray<Series>> callback) {
 		data = getSeries();
 		callback.onSuccess(data);
