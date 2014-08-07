@@ -2,13 +2,12 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
 	xmlns:l="urn:import:org.gwt.chartjs.demo.client.sections.line" 
-	xmlns:b="urn:import:org.gwt.chartjs.demo.client.sections.bar" 
-	xmlns:s="urn:import:org.gwt.chartjs.demo.client.sections" 
+	xmlns:b="urn:import:org.gwt.chartjs.demo.client.sections.bar"
 	xmlns:c="urn:import:org.gwt.chartjs.client" 
 	xmlns:r="urn:import:org.gwt.chartjs.demo.client.sections.radar" 
 	xmlns:p="urn:import:org.gwt.chartjs.demo.client.sections.pie" 
 	xmlns:polar="urn:import:org.gwt.chartjs.demo.client.sections.polar" 
-	xmlns:d="urn:import:org.gwt.chartjs.demo.client.sections.doughnut" xmlns:Cha="urn:import:java.awt">
+	xmlns:d="urn:import:org.gwt.chartjs.demo.client.sections.doughnut">
 	
 	<ui:style>
 		body{
@@ -56,6 +55,11 @@
 			display: block;
 			position: relative;
 		}
+
+        .content {
+            width: 978px;
+            margin: 0px auto;
+        }
 		
 		.hgroup h1 {
 			font-weight: 600;
@@ -162,17 +166,18 @@
 				<h2>Lightweight chart library for you Google Web Toolkit project</h2>
 			</hgroup>
 			<c:LineChart styleName="{style.titleChart}" pixelWidth="489" pixelHeight="246"  ui:field="titleChart"/>
-			<a href="http://localhost:8080/gwt-chartjs-doc-0.0.2-SNAPSHOT/" class="{style.button} {style.red}">Getting Started</a>
-			<a href="https://github.com/stephlag/gwt-chartjs" class="{style.button} {style.blue}">Download</a>
+			<a href="doc.html" class="{style.button} {style.red}">Getting Started</a>
+			<a href="https://github.com/sidney3172/gwt-chartjs" class="{style.button} {style.blue}">Download</a>
 		</header>
-		
-		<l:LineSection></l:LineSection>
-		<b:BarSection></b:BarSection>
-		<r:RadarSection></r:RadarSection>
-		<p:PieSection></p:PieSection>
-		<polar:PolarAreaSection></polar:PolarAreaSection>
-		<d:DoughnutSection></d:DoughnutSection>
-		
+
+        <div class="{style.content}">
+            <l:LineSection></l:LineSection>
+            <b:BarSection></b:BarSection>
+            <r:RadarSection></r:RadarSection>
+            <p:PieSection></p:PieSection>
+            <polar:PolarAreaSection></polar:PolarAreaSection>
+            <d:DoughnutSection></d:DoughnutSection>
+		</div>
 		<footer class="{style.footer}">
 			Original project and design <a href="http://www.chartjs.org">Chart.Js</a> created by <a href="http://www.nickdownie.com">Nick Downie</a> 
 		</footer>

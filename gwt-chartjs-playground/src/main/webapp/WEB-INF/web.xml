@@ -7,7 +7,7 @@
 
   <welcome-file-list>
     <welcome-file>
-      doc.html
+      playground.html
     </welcome-file>
   </welcome-file-list>
 </web-app>
