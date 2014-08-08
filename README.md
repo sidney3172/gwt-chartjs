@@ -11,7 +11,7 @@ This project released and available in Maven Central:
 <dependency>
   <groupId>io.github.sidney3172</groupId>
   <artifactId>gwt-chartjs</artifactId>
-  <version>0.1</version>
+  <version>0.1.1-SNAPSHOT</version>
 </dependency>
 ```
 Sample demo available on <a href="http://sidney3172.github.io/gwt-chartjs/">GitHub Pages</a>
