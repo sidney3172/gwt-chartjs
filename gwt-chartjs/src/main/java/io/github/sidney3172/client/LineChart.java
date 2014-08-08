@@ -18,19 +18,11 @@ import javax.sound.sampled.Line;
 public class LineChart extends Chart {
 
 	private AreaChartDataProvider provider = null;
-	private JavaScriptObject nativeCanvas;
+
 
 	@Override
 	public void draw() {
 		reload();
-		addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent clickEvent) {
-                JavaScriptObject data = sendClick(clickEvent.getNativeEvent(), nativeCanvas);
-                if(data != null)
-                    DataSelectionEvent.fire(LineChart.this, LineChart.this, data);
-            }
-        });
 	}
 	
 	private native JavaScriptObject drawLine(Element canvas, JavaScriptObject data)/*-{
@@ -48,12 +40,8 @@ public class LineChart extends Chart {
 	public void update() {
 		if(provider == null)
 			throw new NullPointerException("Data provider is not specified before calling update()");
-        nativeCanvas = drawLine(canvas, provider.getData());
+        processEvents(drawLine(canvas, provider.getData()));
 	}
-
-    private native JavaScriptObject sendClick(NativeEvent event, JavaScriptObject canvas)/*-{
-        return canvas.getPointsAtEvent(event);
-    }-*/;
 
 	@Override
 	public void reload() {
@@ -64,7 +52,7 @@ public class LineChart extends Chart {
 			
 			@Override
 			public void onSuccess(AreaChartData result) {
-				nativeCanvas = drawLine(canvas,result);
+                processEvents(drawLine(canvas,result));
 			}
 			
 			@Override

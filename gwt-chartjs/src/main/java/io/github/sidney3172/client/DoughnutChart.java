@@ -19,8 +19,8 @@ public class DoughnutChart extends Chart {
 		
 	}
 	
-	private native void drawDoughnut(Element canvas, JavaScriptObject data)/*-{
-		var myLine = new $wnd.Chart(canvas.getContext("2d")).Doughnut(data);
+	private native JavaScriptObject drawDoughnut(Element canvas, JavaScriptObject data)/*-{
+		return new $wnd.Chart(canvas.getContext("2d")).Doughnut(data);
 	}-*/;
 
 	@Override
@@ -40,7 +40,7 @@ public class DoughnutChart extends Chart {
 			
 			@Override
 			public void onSuccess(JsArray<Series> result) {
-				drawDoughnut(canvas, result);
+                drawDoughnut(canvas, result);
 			}
 			
 			@Override

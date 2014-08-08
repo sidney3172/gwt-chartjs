@@ -23,16 +23,16 @@ public class RadarChart extends Chart {
 		this.scaleShowLabels = scaleShowLabels;
 	}
 	
-	private native void drawRadar(Element canvas, JavaScriptObject data, boolean scaleShowLabels)/*-{
-		var myLine = new $wnd.Chart(canvas.getContext("2d")).Radar(data,{scaleShowLabels : scaleShowLabels, pointLabelFontSize : 10});
+	private native JavaScriptObject drawRadar(Element canvas, JavaScriptObject data, boolean scaleShowLabels)/*-{
+		return new $wnd.Chart(canvas.getContext("2d")).Radar(data,{scaleShowLabels : scaleShowLabels, pointLabelFontSize : 10});
 	}-*/;
 
 	@Override
 	public void update() {
 		if(provider == null)
 			throw new NullPointerException("PieCharDataProvider was not initialized before invoking update()");
-		
-		drawRadar(canvas, provider.getData(), scaleShowLabels);
+
+        processEvents(drawRadar(canvas, provider.getData(), scaleShowLabels));
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class RadarChart extends Chart {
 			
 			@Override
 			public void onSuccess(AreaChartData result) {
-				drawRadar(canvas, result, scaleShowLabels);				
+                processEvents(drawRadar(canvas, result, scaleShowLabels));
 			}
 			
 			@Override

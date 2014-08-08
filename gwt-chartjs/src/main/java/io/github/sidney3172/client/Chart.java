@@ -1,5 +1,7 @@
 package io.github.sidney3172.client;
 
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -28,7 +30,8 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 	
 	private boolean animationEnabled = true;
 	protected AnimationOptions animationOptions;
-	
+
+    private JavaScriptObject nativeCanvas;
 	protected CanvasElement canvas;
 	protected ChartStyle style;
 	
@@ -45,6 +48,14 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 		setChartStyle(style);
 		canvas = Document.get().createCanvasElement();
 		getElement().appendChild(canvas);
+        addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+                JavaScriptObject data = getClickPoints(clickEvent.getNativeEvent(), nativeCanvas);
+                if(data != null)
+                    DataSelectionEvent.fire(Chart.this, Chart.this, data);
+            }
+        });
 	}
 	
 	/**
@@ -53,7 +64,13 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 	public Chart() {
 		this(resources.chartStyle());
 	}
-	
+
+    private native JavaScriptObject getClickPoints(NativeEvent event, JavaScriptObject canvas)/*-{
+        if(canvas == null || event == null)
+            return null;
+        return canvas.getPointsAtEvent(event);
+    }-*/;
+
 	/**
 	 * Set new style to the char widget. New style will be injected automatically.<br/>
 	 * NOTICE: new style will be applied after re-drawing of chart<br/>
@@ -64,9 +81,12 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 		setStylePrimaryName(style.chart());
 	}
 
+    protected void processEvents(JavaScriptObject object){
+        this.nativeCanvas = object;
+    }
+
 	@Override
 	protected void onAttach() {
-        GWT.log("Attach");
 		ChartJs.ensureInjected();
 		super.onAttach();
 		draw();
