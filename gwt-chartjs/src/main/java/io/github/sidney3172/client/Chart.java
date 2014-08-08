@@ -1,8 +1,11 @@
 package io.github.sidney3172.client;
 
-import io.github.sidney3172.client.event.AnimationCompleteEvent;
-import io.github.sidney3172.client.event.AnimationCompleteHandler;
-import io.github.sidney3172.client.event.HasAnimationCompleteHandlers;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.view.client.HasData;
+import io.github.sidney3172.client.event.*;
 import io.github.sidney3172.client.options.animation.AnimationOptions;
 import io.github.sidney3172.client.options.animation.HasAnimation;
 import io.github.sidney3172.client.resources.ChartStyle;
@@ -19,7 +22,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
  * @author sidney3172
  *
  */
-public abstract class Chart extends SimplePanel implements HasAnimationCompleteHandlers, HasAnimation{
+public abstract class Chart extends SimplePanel implements HasAnimationCompleteHandlers, HasAnimation, HasClickHandlers, HasDataSelectionEventHandlers{
 
 	private static Resources resources;
 	
@@ -125,4 +128,14 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 		if(animationEnabled && animationOptions == null)
 			animationOptions = new AnimationOptions();
 	}
+
+    @Override
+    public HandlerRegistration addClickHandler(ClickHandler clickHandler) {
+        return addDomHandler(clickHandler, ClickEvent.getType());
+    }
+
+    @Override
+    public HandlerRegistration addDataSelectionHandler(DataSelectionHandler handler) {
+        return addHandler(handler, DataSelectionEvent.getType());
+    }
 }
