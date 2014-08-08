@@ -1,5 +1,7 @@
 package io.github.sidney3172.client;
 
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.ScriptElement;
 import io.github.sidney3172.client.resources.Resources;
 
 import com.google.gwt.core.client.GWT;
@@ -23,12 +25,10 @@ public final class ChartJs {
 			return;
 		Resources res = GWT.create(Resources.class);
 		String source = res.chartJsSource().getText();
-		eval(source);
+        ScriptElement scriptElement = Document.get().createScriptElement();
+        scriptElement.setId("_chartjs");
+        scriptElement.setInnerText(source);
+        Document.get().getBody().appendChild(scriptElement);
 		injected = true;
 	}
-	
-	private static native void eval(String source)/*-{
-		eval(source);
-	}-*/;
-	
 }

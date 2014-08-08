@@ -63,6 +63,7 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 
 	@Override
 	protected void onAttach() {
+        GWT.log("Attach");
 		ChartJs.ensureInjected();
 		super.onAttach();
 		draw();
