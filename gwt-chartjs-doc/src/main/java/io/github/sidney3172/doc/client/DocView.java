@@ -28,9 +28,4 @@ public class DocView extends Composite{
 		res.docStyle().ensureInjected();
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-
-    @UiHandler("lineChart")
-    protected void onDataReceived(DataSelectionEvent event){
-        Window.alert("123");
-    }
 }
