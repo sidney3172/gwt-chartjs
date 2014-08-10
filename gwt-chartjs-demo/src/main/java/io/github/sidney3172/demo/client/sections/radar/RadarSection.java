@@ -1,5 +1,7 @@
 package io.github.sidney3172.demo.client.sections.radar;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.uibinder.client.UiHandler;
 import io.github.sidney3172.client.RadarChart;
 import io.github.sidney3172.demo.client.TestAreaChartDataProvider;
 
@@ -23,4 +25,9 @@ public class RadarSection extends Composite{
 		initWidget(uiBinder.createAndBindUi(this));
 		radarChart.setDataProvider(new TestAreaChartDataProvider());
 	}
+
+    @UiHandler("radarChart")
+    protected void randomize(ClickEvent event){
+        radarChart.update();
+    }
 }

@@ -1,5 +1,7 @@
 package io.github.sidney3172.demo.client.sections.pie;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.uibinder.client.UiHandler;
 import io.github.sidney3172.client.PieChart;
 import io.github.sidney3172.demo.client.TestPieChartDataProvider;
 
@@ -23,4 +25,9 @@ public class PieSection extends Composite{
 		initWidget(uiBinder.createAndBindUi(this));
 		pieChart.setDataProvider(new TestPieChartDataProvider());
 	}
+
+    @UiHandler("pieChart")
+    protected void randomize(ClickEvent event){
+        pieChart.update();
+    }
 }

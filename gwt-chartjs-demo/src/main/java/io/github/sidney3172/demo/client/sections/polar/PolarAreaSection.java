@@ -1,5 +1,7 @@
 package io.github.sidney3172.demo.client.sections.polar;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.uibinder.client.UiHandler;
 import io.github.sidney3172.client.PolarAreaChart;
 import io.github.sidney3172.demo.client.TestPieChartDataProvider;
 
@@ -23,4 +25,9 @@ public class PolarAreaSection extends Composite{
 		initWidget(uiBinder.createAndBindUi(this));
 		polarAreaChart.setDataProvider(new TestPieChartDataProvider());
 	}
+
+    @UiHandler("polarAreaChart")
+    protected void randomize(ClickEvent event){
+        polarAreaChart.update();
+    }
 }

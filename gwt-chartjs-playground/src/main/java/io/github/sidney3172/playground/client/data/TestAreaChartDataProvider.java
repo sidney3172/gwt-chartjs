@@ -1,5 +1,6 @@
 package io.github.sidney3172.playground.client.data;
 
+import com.google.gwt.core.client.GWT;
 import io.github.sidney3172.client.data.AreaChartData;
 import io.github.sidney3172.client.data.AreaChartDataProvider;
 import io.github.sidney3172.client.data.AreaSeries;
@@ -16,6 +17,7 @@ public class TestAreaChartDataProvider implements AreaChartDataProvider{
 
 	@Override
 	public JavaScriptObject getData() {
+        data = createChartData();
 		return data;
 	}
 
@@ -25,23 +27,23 @@ public class TestAreaChartDataProvider implements AreaChartDataProvider{
 		callback.onSuccess(data);
 	}
 
-	private static AreaChartData createChartData(){
+	private AreaChartData createChartData(){
 		AreaChartData data = JavaScriptObject.createObject().cast();
 		data.setLabels(new String[] {"January","February","March","April","May","June","July"});
 		data.setSeries(createSeries());
 		return data;
 	}
 
-	private static JsArray<AreaSeries> createSeries() {
-		JsArray<AreaSeries> series = JavaScriptObject.createArray().cast();
+	private JsArray<AreaSeries> createSeries() {
+        GWT.log("create 1");
+        JsArray<AreaSeries> series = JavaScriptObject.createArray().cast();
 		AreaSeries s = SeriesBuilder
 				.create()
 				.withFillColor("rgba(220,220,220,0.5)")
 				.withStoreColor("rgba(220,220,220,1)")
 				.withPointColor("rgba(220,220,220,1)")
 				.withPointStrokeColor("#fff")
-				.withData(
-						new double[] { Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400) })
+				.withData(getRandomDigits())
 				.get();
 		series.push(s);
 		series.push(SeriesBuilder
@@ -50,11 +52,14 @@ public class TestAreaChartDataProvider implements AreaChartDataProvider{
 				.withStoreColor("rgba(151,187,205,1)")
 				.withPointColor("rgba(151,187,205,1)")
 				.withPointStrokeColor("#fff")
-				.withData(
-						new double[] { Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400) })
+				.withData(getRandomDigits())
 						.get());
 
 		return series;
 	}
+
+    private double[] getRandomDigits(){
+        return new double[] { Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400), Random.nextInt(400) };
+    }
 
 }

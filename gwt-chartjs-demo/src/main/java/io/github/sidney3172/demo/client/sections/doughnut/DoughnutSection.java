@@ -1,5 +1,7 @@
 package io.github.sidney3172.demo.client.sections.doughnut;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.uibinder.client.UiHandler;
 import io.github.sidney3172.client.DoughnutChart;
 import io.github.sidney3172.demo.client.TestPieChartDataProvider;
 
@@ -23,4 +25,9 @@ public class DoughnutSection extends Composite{
 		initWidget(uiBinder.createAndBindUi(this));
 		doughnutChart.setDataProvider(new TestPieChartDataProvider());
 	}
+
+    @UiHandler("doughnutChart")
+    protected void randomize(ClickEvent event){
+        doughnutChart.update();
+    }
 }
