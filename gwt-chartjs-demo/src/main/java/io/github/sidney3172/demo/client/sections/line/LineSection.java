@@ -31,8 +31,7 @@ public class LineSection extends Composite{
 
     @UiHandler("lineChart")
     protected void printDots(DataSelectionEvent event){
-        for(Series s : event.getSeries())
-            GWT.log("series "+s.getValue()+" "+s.getColor());
+
     }
 
     @UiHandler("lineChart")

@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>io.github.sidney3172</groupId>
 		<artifactId>gwt-chartjs-root</artifactId>
-		<version>0.1.1-SNAPSHOT</version>
+		<version>0.1.1</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.sidney3172</groupId>
 	<artifactId>gwt-chartjs-doc</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.1</version>
 	<packaging>war</packaging>
 
 	<properties>
@@ -79,10 +79,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

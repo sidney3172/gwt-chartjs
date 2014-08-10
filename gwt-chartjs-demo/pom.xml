@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>io.github.sidney3172</groupId>
 		<artifactId>gwt-chartjs-root</artifactId>
-		<version>0.1.1-SNAPSHOT</version>
+		<version>0.1.1</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.sidney3172</groupId>
 	<artifactId>gwt-chartjs-demo</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.1</version>
 	<packaging>war</packaging>
 
 	<properties>
@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>io.github.sidney3172</groupId>
 			<artifactId>gwt-chartjs</artifactId>
-			<version>0.1.1-SNAPSHOT</version>
+			<version>0.1.1</version>
 		</dependency>
 	</dependencies>
 	
