@@ -35,7 +35,6 @@ public class TestAreaChartDataProvider implements AreaChartDataProvider{
     }
 
     private JsArray<AreaSeries> createSeries() {
-        GWT.log("create 1");
         JsArray<AreaSeries> series = JavaScriptObject.createArray().cast();
         AreaSeries s = SeriesBuilder
                 .create()

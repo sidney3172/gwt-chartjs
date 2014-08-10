@@ -118,6 +118,14 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 		canvas.setWidth(width);
 	}
 
+    public void setWidth(String width) {
+        canvas.getStyle().setProperty("width", width);
+    }
+
+    public void setHeight(String height){
+        canvas.getStyle().setProperty("height", height);
+    }
+
 	/**
 	 * Method sets pixel height of chart area
 	 * @param height - height in pixels
