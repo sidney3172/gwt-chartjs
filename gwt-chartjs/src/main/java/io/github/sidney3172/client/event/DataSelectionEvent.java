@@ -46,7 +46,6 @@ public class DataSelectionEvent extends GwtEvent<DataSelectionHandler> {
 
     public static void fire(HasDataSelectionEventHandlers source, Object sender, JavaScriptObject data) {
         DataSelectionEvent event = new DataSelectionEvent(sender);
-        GWT.log("raw data : "+new JSONObject(data).toString());
         JSONObject array = new JSONObject(data);
         event.series = new LinkedList<Series>();
         for(String key : array.keySet()){
