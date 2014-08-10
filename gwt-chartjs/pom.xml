@@ -10,7 +10,7 @@
 
 	<name>gwt-chartjs</name>
 	<description>Another one lightweight chart library for Google Web Toolkit project</description>
-	<url></url>
+	<url>http://github.com/sidney3172/gwt-chartjs</url>
 
 
     <scm>
@@ -18,6 +18,14 @@
         <developerConnection>scm:git:git@github.com:sidney3172/gwt-chartjs.git</developerConnection>
         <url>http://github.com/sidney3172/gwt-chartjs</url>
     </scm>
+
+    <developers>
+        <developer>
+            <name>Sergey Gibert</name>
+            <email>sergey.gibert@gmail.com</email>
+            <url>http://github.com/sidney3172</url>
+        </developer>
+    </developers>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
