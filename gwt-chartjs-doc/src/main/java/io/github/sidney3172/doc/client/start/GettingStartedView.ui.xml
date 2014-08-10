@@ -1,13 +1,22 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:d="urn:import:io.github.sidney3172.doc.client">
-	
+
+    <ui:style>
+        .snippet{
+            font-family: Courier New;
+            font-size: 10pt;
+        }
+    </ui:style>
+
 	<d:Section>
 		<h2>Getting started</h2>
 		<h3>Inlude gwt-chartjs</h3>
-		<p>Gwt-chartjs library available at Maven Central, so if you use Maven as a build system just add new dependency to your project</p>
+		<p>Gwt-chartjs library available at Maven Central, so if you use Maven as a build system just add new dependency to your project:</p>
+        <textarea onclick="this.select()" rows="5" cols="40" style="width: 100%" class="{style.snippet}" ui:field="dependencyCode"></textarea>
 		
 		<h3>Setup GWT project</h3>
-		<p>To make this library available in your GWT project add inherit tag to your .gwt.xml file</p>
+		<p>To make this library available in your GWT project add inherit tag to your .gwt.xml file:</p>
+        <textarea onclick="this.select()" rows="1" cols="40" style="width: 100%" class="{style.snippet}" ui:field="inheritCode"></textarea>
 	</d:Section>
 </ui:UiBinder> 
