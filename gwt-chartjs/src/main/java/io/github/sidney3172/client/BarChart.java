@@ -19,15 +19,15 @@ public class BarChart extends Chart {
 	}
 	
 	private native void drawBar(Element canvas, JavaScriptObject data)/*-{
-		var myLine = new $wnd.Chart(canvas.getContext("2d")).Bar(data);
+		new $wnd.Chart(canvas.getContext("2d")).Bar(data);
 	}-*/;
 
 	@Override
 	public void update() {
 		if(provider == null)
 			throw new NullPointerException("PieCharDataProvider is not specified before invoking update()");
-		
-		drawBar(canvas, provider.getData());
+
+        drawBar(canvas, provider.getData());
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class BarChart extends Chart {
 			
 			@Override
 			public void onSuccess(AreaChartData result) {
-				drawBar(canvas, result);
+                drawBar(canvas, result);
 			}
 			
 			@Override

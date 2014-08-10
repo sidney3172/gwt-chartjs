@@ -12,7 +12,8 @@ public class TestPieChartDataProvider implements PieChartDataProvider{
 	private JsArray<Series> data;
 
 	public JsArray<Series> getData() {
-		return data;
+		data = getSeries();
+        return data;
 	}
 
 	public void reload(AsyncCallback<JsArray<Series>> callback) {

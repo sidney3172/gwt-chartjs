@@ -18,15 +18,15 @@ public class PieChart extends Chart {
 		reload();
 	}
 	
-	private native void drawPie(Element canvas, JavaScriptObject data)/*-{
-		var myLine = new $wnd.Chart(canvas.getContext("2d")).Pie(data);
+	private native JavaScriptObject drawPie(Element canvas, JavaScriptObject data)/*-{
+		return new $wnd.Chart(canvas.getContext("2d")).Pie(data);
 	}-*/;
 
 	@Override
 	public void update() {
 		if(provider == null)
 			throw new NullPointerException("PieChartDataProvider not initialized before invoking update()");
-		drawPie(canvas, provider.getData());
+        drawPie(canvas, provider.getData());
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class PieChart extends Chart {
 			
 			@Override
 			public void onSuccess(JsArray<Series> result) {
-				drawPie(canvas, result);
+                drawPie(canvas, result);
 			}
 			
 			@Override

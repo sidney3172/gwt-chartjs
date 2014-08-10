@@ -63,7 +63,7 @@
 			<h1>GWT-Chart.js Documentation</h1>
 			<h2>Examples of use</h2>
 			<s:GettingStartedView></s:GettingStartedView>
-			<l:LinearChartView></l:LinearChartView>
+			<l:LinearChartView ui:field="lineChart"></l:LinearChartView>
 		</div>
 	</g:HTMLPanel>
 </ui:UiBinder> 

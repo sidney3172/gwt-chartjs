@@ -1,5 +1,7 @@
 package io.github.sidney3172.demo.client.sections.bar;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.uibinder.client.UiHandler;
 import io.github.sidney3172.client.BarChart;
 import io.github.sidney3172.demo.client.TestAreaChartDataProvider;
 
@@ -23,4 +25,9 @@ public class BarSection extends Composite{
 		initWidget(uiBinder.createAndBindUi(this));
 		barChart.setDataProvider(new TestAreaChartDataProvider());
 	}
+
+    @UiHandler("barChart")
+    protected void randomize(ClickEvent event){
+        barChart.update();
+    }
 }

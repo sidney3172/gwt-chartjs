@@ -1,8 +1,13 @@
 package io.github.sidney3172.client;
 
-import io.github.sidney3172.client.event.AnimationCompleteEvent;
-import io.github.sidney3172.client.event.AnimationCompleteHandler;
-import io.github.sidney3172.client.event.HasAnimationCompleteHandlers;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.NativeEvent;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.view.client.HasData;
+import io.github.sidney3172.client.event.*;
 import io.github.sidney3172.client.options.animation.AnimationOptions;
 import io.github.sidney3172.client.options.animation.HasAnimation;
 import io.github.sidney3172.client.resources.ChartStyle;
@@ -19,13 +24,14 @@ import com.google.gwt.user.client.ui.SimplePanel;
  * @author sidney3172
  *
  */
-public abstract class Chart extends SimplePanel implements HasAnimationCompleteHandlers, HasAnimation{
+public abstract class Chart extends SimplePanel implements HasAnimationCompleteHandlers, HasAnimation, HasClickHandlers, HasDataSelectionEventHandlers{
 
 	private static Resources resources;
 	
 	private boolean animationEnabled = true;
 	protected AnimationOptions animationOptions;
-	
+
+    private JavaScriptObject nativeCanvas;
 	protected CanvasElement canvas;
 	protected ChartStyle style;
 	
@@ -42,6 +48,14 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 		setChartStyle(style);
 		canvas = Document.get().createCanvasElement();
 		getElement().appendChild(canvas);
+        addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+                JavaScriptObject data = getClickPoints(clickEvent.getNativeEvent(), nativeCanvas);
+                if(data != null)
+                    DataSelectionEvent.fire(Chart.this, Chart.this, data);
+            }
+        });
 	}
 	
 	/**
@@ -50,7 +64,13 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 	public Chart() {
 		this(resources.chartStyle());
 	}
-	
+
+    private native JavaScriptObject getClickPoints(NativeEvent event, JavaScriptObject canvas)/*-{
+        if(canvas == null || event == null)
+            return null;
+        return canvas.getPointsAtEvent(event);
+    }-*/;
+
 	/**
 	 * Set new style to the char widget. New style will be injected automatically.<br/>
 	 * NOTICE: new style will be applied after re-drawing of chart<br/>
@@ -60,6 +80,10 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 		style.ensureInjected();
 		setStylePrimaryName(style.chart());
 	}
+
+    protected void processEvents(JavaScriptObject object){
+        this.nativeCanvas = object;
+    }
 
 	@Override
 	protected void onAttach() {
@@ -94,6 +118,14 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 		canvas.setWidth(width);
 	}
 
+    public void setWidth(String width) {
+        canvas.getStyle().setProperty("width", width);
+    }
+
+    public void setHeight(String height){
+        canvas.getStyle().setProperty("height", height);
+    }
+
 	/**
 	 * Method sets pixel height of chart area
 	 * @param height - height in pixels
@@ -124,4 +156,14 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 		if(animationEnabled && animationOptions == null)
 			animationOptions = new AnimationOptions();
 	}
+
+    @Override
+    public HandlerRegistration addClickHandler(ClickHandler clickHandler) {
+        return addDomHandler(clickHandler, ClickEvent.getType());
+    }
+
+    @Override
+    public HandlerRegistration addDataSelectionHandler(DataSelectionHandler handler) {
+        return addHandler(handler, DataSelectionEvent.getType());
+    }
 }

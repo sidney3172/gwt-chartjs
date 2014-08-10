@@ -18,21 +18,21 @@ public class PolarAreaChart extends Chart {
 		reload();
 	}
 	
-	private native void drawPolarArea(Element canvas, JavaScriptObject data)/*-{
-		var myLine = new $wnd.Chart(canvas.getContext("2d")).PolarArea(data);
+	private native JavaScriptObject drawPolarArea(Element canvas, JavaScriptObject data)/*-{
+		return new $wnd.Chart(canvas.getContext("2d")).PolarArea(data);
 	}-*/;
 
 	@Override
 	public void update() {
 		if(provider == null)
-			throw new NullPointerException("PieCharDataProvider is not initialized before invoking update()");
-		drawPolarArea(canvas, provider.getData());
+			throw new NullPointerException("PieChartDataProvider is not initialized before invoking update()");
+        drawPolarArea(canvas, provider.getData());
 	}
 
 	@Override
 	public void reload() {
 		if(provider == null)
-			throw new NullPointerException("PieCharDataProvider is not initialized before invoking reload()");
+			throw new NullPointerException("PieChartDataProvider is not initialized before invoking reload()");
 		
 		
 		//TODO: show loading to user
@@ -41,7 +41,7 @@ public class PolarAreaChart extends Chart {
 			
 			@Override
 			public void onSuccess(JsArray<Series> result) {
-				drawPolarArea(canvas, result);
+                drawPolarArea(canvas, result);
 			}
 			
 			@Override

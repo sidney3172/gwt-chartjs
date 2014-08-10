@@ -149,7 +149,7 @@
 			right: 0px;
 			text-rendering: optimizelegibility;
 			top: 60px;
-			width: 489px;			
+			width: 489px;
 		}
 	</ui:style>
 
