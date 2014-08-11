@@ -1,12 +1,11 @@
 package io.github.sidney3172.client;
 
-import io.github.sidney3172.client.data.PieChartDataProvider;
-import io.github.sidney3172.client.data.Series;
-
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import io.github.sidney3172.client.data.PieChartDataProvider;
+import io.github.sidney3172.client.data.Series;
 
 
 public class PieChart extends Chart {
@@ -18,15 +17,18 @@ public class PieChart extends Chart {
 		reload();
 	}
 	
-	private native JavaScriptObject drawPie(Element canvas, JavaScriptObject data)/*-{
-		return new $wnd.Chart(canvas.getContext("2d")).Pie(data);
+	private native JavaScriptObject drawPie(Element canvas, JavaScriptObject data, JavaScriptObject nativeCanvas)/*-{
+        if(nativeCanvas != null)
+            nativeCanvas.destroy();
+
+        return new $wnd.Chart(canvas.getContext("2d")).Pie(data);
 	}-*/;
 
 	@Override
 	public void update() {
 		if(provider == null)
 			throw new NullPointerException("PieChartDataProvider not initialized before invoking update()");
-        drawPie(canvas, provider.getData());
+        nativeCanvas = drawPie(canvas, provider.getData(),nativeCanvas);
 	}
 
 	@Override
@@ -39,7 +41,7 @@ public class PieChart extends Chart {
 			
 			@Override
 			public void onSuccess(JsArray<Series> result) {
-                drawPie(canvas, result);
+                nativeCanvas = drawPie(canvas, provider.getData(),nativeCanvas);
 			}
 			
 			@Override

@@ -1,22 +1,20 @@
 package io.github.sidney3172.client;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.dom.client.NativeEvent;
+import com.google.gwt.dom.client.CanvasElement;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.view.client.HasData;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.ui.SimplePanel;
 import io.github.sidney3172.client.event.*;
 import io.github.sidney3172.client.options.animation.AnimationOptions;
 import io.github.sidney3172.client.options.animation.HasAnimation;
 import io.github.sidney3172.client.resources.ChartStyle;
 import io.github.sidney3172.client.resources.Resources;
-
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.CanvasElement;
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.user.client.ui.SimplePanel;
 
 /**
  * Base class for all chart widgets<br/>
@@ -31,7 +29,7 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 	private boolean animationEnabled = true;
 	protected AnimationOptions animationOptions;
 
-    private JavaScriptObject nativeCanvas;
+    protected JavaScriptObject nativeCanvas;
 	protected CanvasElement canvas;
 	protected ChartStyle style;
 	
@@ -48,11 +46,14 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 		setChartStyle(style);
 		canvas = Document.get().createCanvasElement();
 		getElement().appendChild(canvas);
+        sinkEvents(Event.ONCLICK);
         addClickHandler(new ClickHandler() {
             @Override
-            public void onClick(ClickEvent clickEvent) {
-                JavaScriptObject data = getClickPoints(clickEvent.getNativeEvent(), nativeCanvas);
-                if(data != null)
+            public void onClick(final ClickEvent clickEvent) {
+                JavaScriptObject obj = clickEvent.getNativeEvent().cast();
+
+                JavaScriptObject data = getClickPoints(obj, nativeCanvas);
+                if (data != null)
                     DataSelectionEvent.fire(Chart.this, Chart.this, data);
             }
         });
@@ -65,10 +66,16 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 		this(resources.chartStyle());
 	}
 
-    private native JavaScriptObject getClickPoints(NativeEvent event, JavaScriptObject canvas)/*-{
+    private native JavaScriptObject getClickPoints(JavaScriptObject event, JavaScriptObject canvas)/*-{
         if(canvas == null || event == null)
             return null;
-        return canvas.getPointsAtEvent(event);
+        try {
+            return canvas.getPointsAtEvent(event);
+        }
+        catch(e){
+            //exception occurred when added additional ClickHandler which destroys chart before processing.
+            return null;
+        }
     }-*/;
 
 	/**
@@ -158,8 +165,13 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 	}
 
     @Override
+    /**
+     * Important Note : clickHandler added internally by default to handle DataSelectionEvent.
+     * In case external clickHandler destroying chart (eg update() method invoked) this will lead
+     * to DataSelectionEvent won't be created
+     */
     public HandlerRegistration addClickHandler(ClickHandler clickHandler) {
-        return addDomHandler(clickHandler, ClickEvent.getType());
+        return addHandler(clickHandler, ClickEvent.getType());
     }
 
     @Override

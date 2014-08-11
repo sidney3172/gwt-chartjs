@@ -19,7 +19,10 @@ public class DoughnutChart extends Chart {
 		
 	}
 	
-	private native JavaScriptObject drawDoughnut(Element canvas, JavaScriptObject data)/*-{
+	private native JavaScriptObject drawDoughnut(Element canvas, JavaScriptObject data, JavaScriptObject nativeCanvas)/*-{
+        if(nativeCanvas != null)
+            nativeCanvas.destroy();
+
 		return new $wnd.Chart(canvas.getContext("2d")).Doughnut(data);
 	}-*/;
 
@@ -27,7 +30,7 @@ public class DoughnutChart extends Chart {
 	public void update() {
 		if(provider == null)
 			throw new NullPointerException("PieCharDataProvider is not initialized before invoking update()");
-		drawDoughnut(canvas, provider.getData());
+		nativeCanvas = drawDoughnut(canvas, provider.getData(),nativeCanvas);
 	}
 
 	@Override
@@ -40,7 +43,7 @@ public class DoughnutChart extends Chart {
 			
 			@Override
 			public void onSuccess(JsArray<Series> result) {
-                drawDoughnut(canvas, result);
+                nativeCanvas = drawDoughnut(canvas, result, nativeCanvas);
 			}
 			
 			@Override
