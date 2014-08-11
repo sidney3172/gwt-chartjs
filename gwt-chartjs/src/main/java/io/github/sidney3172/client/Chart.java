@@ -9,6 +9,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.SimplePanel;
 import io.github.sidney3172.client.event.*;
 import io.github.sidney3172.client.options.animation.AnimationOptions;
@@ -151,6 +152,24 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 	public void setAnimationEnabled(boolean enable) {
 		
 	}
+
+    /**
+     * Creates snapshot of current state of chart as image
+     * @return Image object or null if Chart not rendered (or in progress)
+     */
+    public Image getSnapshot(){
+        String code= getBase64Image(nativeCanvas);
+        if(code == null)
+            return null;
+        Image image = new Image(code);
+        return image;
+    }
+
+    private native String getBase64Image(JavaScriptObject nativeCanvas)/*-{
+        if(nativeCanvas != null)
+            return nativeCanvas.toBase64Image();
+        return null;
+    }-*/;
 	
 	@Override
 	public boolean isAnimationEnabled() {
