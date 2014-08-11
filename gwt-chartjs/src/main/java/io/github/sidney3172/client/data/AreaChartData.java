@@ -9,10 +9,6 @@ public class AreaChartData extends JavaScriptObject{
 	protected AreaChartData(){
 	}
 	
-//	public final native String[] getLabels() /*-{
-//		return this.labels;
-//	}-*/;
-
 	public final void setLabels(String[] labels){
 		JsArrayString array = JsArrayString.createArray().cast();
 		for(String str : labels)

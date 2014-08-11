@@ -1,11 +1,10 @@
 package io.github.sidney3172.client;
 
-import io.github.sidney3172.client.data.AreaChartData;
-import io.github.sidney3172.client.data.AreaChartDataProvider;
-
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import io.github.sidney3172.client.data.AreaChartData;
+import io.github.sidney3172.client.data.AreaChartDataProvider;
 
 
 public class RadarChart extends Chart {
@@ -16,14 +15,16 @@ public class RadarChart extends Chart {
 	@Override
 	public void draw() {
 		reload();
-//		drawRadar(canvas, TestDataCreator.get(), scaleShowLabels);
 	}
 	
 	public void setScaleShowLabels(boolean scaleShowLabels){
 		this.scaleShowLabels = scaleShowLabels;
 	}
 	
-	private native JavaScriptObject drawRadar(Element canvas, JavaScriptObject data, boolean scaleShowLabels)/*-{
+	private native JavaScriptObject drawRadar(Element canvas, JavaScriptObject data, boolean scaleShowLabels, JavaScriptObject nativeCanvas)/*-{
+        if(nativeCanvas != null)
+            nativeCanvas.destroy();
+
 		return new $wnd.Chart(canvas.getContext("2d")).Radar(data,{scaleShowLabels : scaleShowLabels, pointLabelFontSize : 10});
 	}-*/;
 
@@ -32,7 +33,7 @@ public class RadarChart extends Chart {
 		if(provider == null)
 			throw new NullPointerException("PieCharDataProvider was not initialized before invoking update()");
 
-        processEvents(drawRadar(canvas, provider.getData(), scaleShowLabels));
+        processEvents(drawRadar(canvas, provider.getData(), scaleShowLabels, nativeCanvas));
 	}
 
 	@Override
@@ -46,7 +47,7 @@ public class RadarChart extends Chart {
 			
 			@Override
 			public void onSuccess(AreaChartData result) {
-                processEvents(drawRadar(canvas, result, scaleShowLabels));
+                processEvents(drawRadar(canvas, result, scaleShowLabels, nativeCanvas));
 			}
 			
 			@Override

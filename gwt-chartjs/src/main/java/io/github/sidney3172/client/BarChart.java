@@ -1,5 +1,6 @@
 package io.github.sidney3172.client;
 
+import com.google.gwt.core.client.GWT;
 import io.github.sidney3172.client.data.AreaChartData;
 import io.github.sidney3172.client.data.AreaChartDataProvider;
 
@@ -18,16 +19,20 @@ public class BarChart extends Chart {
 		
 	}
 	
-	private native void drawBar(Element canvas, JavaScriptObject data)/*-{
-		new $wnd.Chart(canvas.getContext("2d")).Bar(data);
+	private native JavaScriptObject drawBar(Element canvas, JavaScriptObject data, JavaScriptObject nativeCanvas)/*-{
+        if(nativeCanvas != null) {
+            nativeCanvas.destroy();
+        }
+
+        nativeCanvas = new $wnd.Chart(canvas.getContext("2d")).Bar(data);
+        return nativeCanvas;
 	}-*/;
 
 	@Override
 	public void update() {
 		if(provider == null)
 			throw new NullPointerException("PieCharDataProvider is not specified before invoking update()");
-
-        drawBar(canvas, provider.getData());
+        nativeCanvas = drawBar(canvas, provider.getData(), nativeCanvas);
 	}
 
 	@Override
@@ -40,7 +45,7 @@ public class BarChart extends Chart {
 			
 			@Override
 			public void onSuccess(AreaChartData result) {
-                drawBar(canvas, result);
+                nativeCanvas = drawBar(canvas, result, nativeCanvas);
 			}
 			
 			@Override

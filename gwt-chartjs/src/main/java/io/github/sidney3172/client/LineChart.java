@@ -1,18 +1,12 @@
 package io.github.sidney3172.client;
 
-import com.google.gwt.dom.client.NativeEvent;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Window;
-import io.github.sidney3172.client.data.AreaChartData;
-import io.github.sidney3172.client.data.AreaChartDataProvider;
-
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import io.github.sidney3172.client.event.DataSelectionEvent;
+import io.github.sidney3172.client.data.AreaChartData;
+import io.github.sidney3172.client.data.AreaChartDataProvider;
 
-import javax.sound.sampled.Line;
+
 
 
 public class LineChart extends Chart {
@@ -25,14 +19,12 @@ public class LineChart extends Chart {
 		reload();
 	}
 	
-	private native JavaScriptObject drawLine(Element canvas, JavaScriptObject data)/*-{
-        if ($wnd.testChart == null || $wnd.testChart == undefined) {
-            console.log("not null");
-            $wnd.testChart = new $wnd.Chart(canvas.getContext("2d")).Line(data);
-            return $wnd.testChart;
-        }
-        return new $wnd.Chart(canvas.getContext("2d")).Line(data);
+	private native JavaScriptObject drawLine(Element canvas, JavaScriptObject data, JavaScriptObject nativeCanvas)/*-{
+        if(nativeCanvas != null)
+            nativeCanvas.destroy();
 
+        nativeCanvas = new $wnd.Chart(canvas.getContext("2d")).Line(data);
+        return nativeCanvas;
 
 	}-*/;
 
@@ -40,7 +32,7 @@ public class LineChart extends Chart {
 	public void update() {
 		if(provider == null)
 			throw new NullPointerException("Data provider is not specified before calling update()");
-        processEvents(drawLine(canvas, provider.getData()));
+        processEvents(drawLine(canvas, provider.getData(), nativeCanvas));
 	}
 
 	@Override
@@ -52,7 +44,7 @@ public class LineChart extends Chart {
 			
 			@Override
 			public void onSuccess(AreaChartData result) {
-                processEvents(drawLine(canvas,result));
+                processEvents(drawLine(canvas,result, nativeCanvas));
 			}
 			
 			@Override
