@@ -8,12 +8,12 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.SimplePanel;
 import io.github.sidney3172.client.event.*;
 import io.github.sidney3172.client.options.animation.AnimationOptions;
-import io.github.sidney3172.client.options.animation.HasAnimation;
 import io.github.sidney3172.client.resources.ChartStyle;
 import io.github.sidney3172.client.resources.Resources;
 
@@ -23,15 +23,12 @@ import io.github.sidney3172.client.resources.Resources;
  * @author sidney3172
  *
  */
-public abstract class Chart extends SimplePanel implements HasAnimationCompleteHandlers, HasAnimation, HasClickHandlers, HasDataSelectionEventHandlers{
+public abstract class Chart extends SimplePanel implements HasAnimationCompleteHandlers, HasClickHandlers, HasDataSelectionEventHandlers{
 
 	private static Resources resources;
-	
-	private boolean animationEnabled = true;
-	protected AnimationOptions animationOptions;
 
     protected JavaScriptObject nativeCanvas;
-	protected CanvasElement canvas;
+	private CanvasElement canvas;
 	protected ChartStyle style;
 	
 	
@@ -147,11 +144,6 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 	public void addAnimationCompleteHandler(AnimationCompleteHandler handler) {
 		addHandler(handler, AnimationCompleteEvent.getType());
 	}
-	
-	@Override
-	public void setAnimationEnabled(boolean enable) {
-		
-	}
 
     /**
      * Creates snapshot of current state of chart as image
@@ -170,18 +162,6 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
             return nativeCanvas.toBase64Image();
         return null;
     }-*/;
-	
-	@Override
-	public boolean isAnimationEnabled() {
-		return animationEnabled;
-	}
-	
-	@Override
-	public void setAnimationOptions(AnimationOptions options) {
-		this.animationOptions = options;
-		if(animationEnabled && animationOptions == null)
-			animationOptions = new AnimationOptions();
-	}
 
     @Override
     /**
@@ -196,5 +176,18 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
     @Override
     public HandlerRegistration addDataSelectionHandler(DataSelectionHandler handler) {
         return addHandler(handler, DataSelectionEvent.getType());
+    }
+
+    protected JavaScriptObject getNativeCanvas(){
+        return nativeCanvas;
+    }
+
+    protected CanvasElement getNativeElement(){
+        return canvas;
+    }
+
+    protected void setNativeCanvas(JavaScriptObject object){
+        this.nativeCanvas = object;
+        processEvents(object);
     }
 }

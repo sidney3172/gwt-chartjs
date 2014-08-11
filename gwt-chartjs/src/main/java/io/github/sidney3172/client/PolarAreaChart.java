@@ -8,7 +8,7 @@ import io.github.sidney3172.client.data.PieChartDataProvider;
 import io.github.sidney3172.client.data.Series;
 
 
-public class PolarAreaChart extends Chart {
+public class PolarAreaChart extends ChartWithOptions {
 	
 	private PieChartDataProvider provider;
 	
@@ -17,18 +17,23 @@ public class PolarAreaChart extends Chart {
 		reload();
 	}
 	
-	private native JavaScriptObject drawPolarArea(Element canvas, JavaScriptObject data, JavaScriptObject nativeCanvas)/*-{
-        if(nativeCanvas != null)
+	private native void drawPolarArea(JavaScriptObject data)/*-{
+        canvas = this.@io.github.sidney3172.client.ChartWithOptions::getNativeElement()();
+        nativeCanvas = this.@io.github.sidney3172.client.ChartWithOptions::getNativeCanvas()();
+        if(nativeCanvas != null) {
             nativeCanvas.destroy();
+        }
 
-		return new $wnd.Chart(canvas.getContext("2d")).PolarArea(data);
+        var options = this.@io.github.sidney3172.client.ChartWithOptions::constructOptions()();
+        nativeCanvas = new $wnd.Chart(canvas.getContext("2d")).PolarArea(data,options);
+        this.@io.github.sidney3172.client.ChartWithOptions::setNativeCanvas(Lcom/google/gwt/core/client/JavaScriptObject;)(nativeCanvas);
 	}-*/;
 
 	@Override
 	public void update() {
 		if(provider == null)
 			throw new NullPointerException("PieChartDataProvider is not initialized before invoking update()");
-        nativeCanvas = drawPolarArea(canvas, provider.getData(), nativeCanvas);
+        drawPolarArea(provider.getData());
 	}
 
 	@Override
@@ -43,7 +48,7 @@ public class PolarAreaChart extends Chart {
 			
 			@Override
 			public void onSuccess(JsArray<Series> result) {
-                nativeCanvas = drawPolarArea(canvas, provider.getData(), nativeCanvas);
+                drawPolarArea(provider.getData());
 			}
 			
 			@Override
