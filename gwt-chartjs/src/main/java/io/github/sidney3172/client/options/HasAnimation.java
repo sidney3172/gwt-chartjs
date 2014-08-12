@@ -1,4 +1,4 @@
-package io.github.sidney3172.client.options.animation;
+package io.github.sidney3172.client.options;
 
 /**
  * Enum contains types of easing of chart animation
@@ -27,7 +27,7 @@ public interface HasAnimation{
 
     /**
      * Specify animation easing
-     * Default value is {@link io.github.sidney3172.client.options.animation.Type#EASE_OUT_QUART}
+     * Default value is {@link Type#EASE_OUT_QUART}
      * @param type
      */
     public void setAnimationType(Type type);

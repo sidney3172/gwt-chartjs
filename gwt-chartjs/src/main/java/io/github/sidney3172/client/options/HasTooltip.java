@@ -1,4 +1,4 @@
-package io.github.sidney3172.client.options.tooltip;
+package io.github.sidney3172.client.options;
 
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Event;

@@ -1,4 +1,4 @@
-package io.github.sidney3172.client.options.animation;
+package io.github.sidney3172.client.options;
 
 /**
  * Callback used to handle animation state changes for charts

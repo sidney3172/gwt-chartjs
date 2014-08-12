@@ -1,8 +1,6 @@
-package io.github.sidney3172.client.options.legend;
+package io.github.sidney3172.client.options;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.safehtml.shared.SafeHtml;
-import io.github.sidney3172.client.options.ChartOption;
 
 /**
  * Created by sidney3172 on 11/08/14.

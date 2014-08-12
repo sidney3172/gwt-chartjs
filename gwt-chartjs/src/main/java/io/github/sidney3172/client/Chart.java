@@ -12,10 +12,7 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.SimplePanel;
 import io.github.sidney3172.client.event.*;
-import io.github.sidney3172.client.options.ChartOption;
-import io.github.sidney3172.client.options.animation.AnimationCallback;
-import io.github.sidney3172.client.options.animation.HasAnimation;
-import io.github.sidney3172.client.options.animation.Type;
+import io.github.sidney3172.client.options.*;
 import io.github.sidney3172.client.resources.ChartStyle;
 import io.github.sidney3172.client.resources.Resources;
 
@@ -28,9 +25,7 @@ import java.util.List;
  * @author sidney3172
  *
  */
-public abstract class Chart extends SimplePanel implements HasAnimationCompleteHandlers, HasClickHandlers,HasAnimation, HasDataSelectionEventHandlers{
-
-
+public abstract class Chart extends SimplePanel implements HasAnimationCompleteHandlers, HasClickHandlers,HasAnimation, HasDataSelectionEventHandlers, IsResponsive{
 
     private static Resources resources;
 
@@ -215,7 +210,7 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 
     /**
      * Specify animation easing
-     * Default value is {@link io.github.sidney3172.client.options.animation.Type#EASE_OUT_QUART}
+     * Default value is {@link io.github.sidney3172.client.options.Type#EASE_OUT_QUART}
      * @param type
      */
     public void setAnimationType(Type type){
@@ -276,4 +271,21 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
                 callback.onAnimationComplete();
         }
     }
+
+    @Override
+    public void setResponsive(boolean responsive){
+        if(!responsive)
+            options.clearProperty(RESPONSIVE);
+        else
+            options.setProperty(RESPONSIVE, true);
+    }
+
+    @Override
+    public void setMaintainAspectRatio(boolean aspectRatio){
+        if(!aspectRatio)
+            options.clearProperty(MAINTAIN_ASPECT_RATIO);
+        else
+            options.setProperty(MAINTAIN_ASPECT_RATIO, true);
+    }
+
 }

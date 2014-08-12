@@ -1,18 +1,15 @@
 package io.github.sidney3172.demo.client.sections.line;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import io.github.sidney3172.client.LineChart;
 import io.github.sidney3172.client.event.DataSelectionEvent;
-import io.github.sidney3172.client.options.animation.Type;
-import io.github.sidney3172.client.options.legend.LegendOption;
+import io.github.sidney3172.client.options.LegendOption;
 import io.github.sidney3172.demo.client.TestAreaChartDataProvider;
 
 public class LineSection extends Composite{

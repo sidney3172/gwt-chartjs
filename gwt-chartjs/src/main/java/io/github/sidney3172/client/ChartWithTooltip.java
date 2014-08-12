@@ -1,9 +1,8 @@
 package io.github.sidney3172.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Event;
-import io.github.sidney3172.client.options.tooltip.HasTooltip;
+import io.github.sidney3172.client.options.HasTooltip;
 
 /**
  * Adds tooltip configurations to Chart object

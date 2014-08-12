@@ -1,4 +1,4 @@
-package io.github.sidney3172.client.options.animation;
+package io.github.sidney3172.client.options;
 
 /**
  * Created by sidney3172 on 12/08/14.
