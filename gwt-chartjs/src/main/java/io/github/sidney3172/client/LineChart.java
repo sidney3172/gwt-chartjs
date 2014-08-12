@@ -8,7 +8,7 @@ import io.github.sidney3172.client.data.AreaChartDataProvider;
 
 
 
-public class LineChart extends ChartWithTooltip {
+public class LineChart extends ChartWithScale {
 
 	private AreaChartDataProvider provider = null;
 

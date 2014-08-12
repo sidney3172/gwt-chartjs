@@ -7,7 +7,7 @@ import io.github.sidney3172.client.data.AreaChartData;
 import io.github.sidney3172.client.data.AreaChartDataProvider;
 
 
-public class RadarChart extends ChartWithTooltip {
+public class RadarChart extends ChartWithScale {
 	
 	private AreaChartDataProvider provider;
 	private boolean scaleShowLabels = false;
