@@ -20,6 +20,9 @@ import io.github.sidney3172.client.options.animation.Type;
 import io.github.sidney3172.client.resources.ChartStyle;
 import io.github.sidney3172.client.resources.Resources;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Base class for all chart widgets<br/>
  * Class describes generic behavior of all chart widgets
@@ -36,6 +39,7 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
     protected JavaScriptObject nativeCanvas;
 	private CanvasElement canvas;
 	protected ChartStyle style;
+    protected List<AnimationCallback> callbackList = new ArrayList<AnimationCallback>();
 	
 	
 	static{
@@ -48,6 +52,7 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 	 */
 	public Chart(ChartStyle style){
 		setChartStyle(style);
+        registerNativeAnimationHandlers();
 		canvas = Document.get().createCanvasElement();
 		getElement().appendChild(canvas);
         sinkEvents(Event.ONCLICK);
@@ -226,7 +231,8 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
      * @param callback
      */
     public void addAnimationCallback(AnimationCallback callback){
-        //TODO implement me
+        if(callback != null)
+            callbackList.add(callback);
     }
 
     @Override
@@ -243,5 +249,32 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
      */
     protected JavaScriptObject constructOptions(){
         return options;
+    }
+
+    protected native void registerNativeAnimationHandlers()/*-{
+        options = this.@io.github.sidney3172.client.Chart::constructOptions()();
+        self = this;
+        options.onAnimationProgress = function(progress){
+            self.@io.github.sidney3172.client.Chart::onAnimationProgress(D)(progress);
+            return;
+        }
+        options.onAnimationComplete = function(){
+            self.@io.github.sidney3172.client.Chart::onAnimationComplete()();
+            return;
+        }
+    }-*/;
+
+    protected void onAnimationProgress(double progress){
+        for(AnimationCallback callback : callbackList){
+            if(callback != null)
+                callback.onProgress(progress);
+        }
+    }
+
+    protected void onAnimationComplete(){
+        for(AnimationCallback callback : callbackList){
+            if(callback != null)
+                callback.onAnimationComplete();
+        }
     }
 }
