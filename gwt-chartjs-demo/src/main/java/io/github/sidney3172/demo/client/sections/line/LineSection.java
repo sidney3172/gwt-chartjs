@@ -31,6 +31,7 @@ public class LineSection extends Composite{
 		lineChart.setDataProvider(provider);
         lineChart.setAnimationEnabled(false);
         lineChart.setAnimationSteps(150);
+        lineChart.showTooltips(false);
         LegendOption legend = LegendOption.get();
         legend.setLegendTemplate("<ul class=\\\"<%=name.toLowerCase()%>-legend\\\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\\\"background-color:<%=datasets[i].lineColor%>\\\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>");
 //        lineChart.addOption(legend);

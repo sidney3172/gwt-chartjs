@@ -1,10 +1,6 @@
 package io.github.sidney3172.client.options;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import io.github.sidney3172.client.Chart;
-import io.github.sidney3172.client.options.animation.HasAnimation;
-
-import java.util.List;
 
 /**
  * Simple container for chart options
@@ -29,5 +25,9 @@ public class ChartOption extends JavaScriptObject{
 
     public final native void appendTo(JavaScriptObject parent)/*-{
         for(var key in this) parent[key]=this[key];
+    }-*/;
+
+    public final native void setArrayProperty(String key, Object[] value)/*-{
+        this[key] = value;
     }-*/;
 }

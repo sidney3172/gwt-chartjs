@@ -8,7 +8,7 @@ import io.github.sidney3172.client.data.PieChartDataProvider;
 import io.github.sidney3172.client.data.Series;
 
 
-public class PieChart extends Chart {
+public class PieChart extends ChartWithTooltip {
 	
 	private PieChartDataProvider provider;
 	

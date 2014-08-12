@@ -6,7 +6,7 @@ import io.github.sidney3172.client.data.AreaChartData;
 import io.github.sidney3172.client.data.AreaChartDataProvider;
 
 
-public class BarChart extends Chart {
+public class BarChart extends ChartWithTooltip {
 	
 	private AreaChartDataProvider provider;
 	

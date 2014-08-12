@@ -7,7 +7,7 @@ import io.github.sidney3172.client.data.PieChartDataProvider;
 import io.github.sidney3172.client.data.Series;
 
 
-public class DoughnutChart extends Chart {
+public class DoughnutChart extends ChartWithTooltip {
 	
 	private PieChartDataProvider provider;
 	
