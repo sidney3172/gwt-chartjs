@@ -8,7 +8,7 @@ import io.github.sidney3172.client.data.AreaChartDataProvider;
 
 
 
-public class LineChart extends ChartWithOptions {
+public class LineChart extends Chart {
 
 	private AreaChartDataProvider provider = null;
 
@@ -19,15 +19,15 @@ public class LineChart extends ChartWithOptions {
 	}
 	
 	private native void drawLine(JavaScriptObject data)/*-{
-        canvas = this.@io.github.sidney3172.client.ChartWithOptions::getNativeElement()();
-        nativeCanvas = this.@io.github.sidney3172.client.ChartWithOptions::getNativeCanvas()();
+        canvas = this.@io.github.sidney3172.client.Chart::getNativeElement()();
+        nativeCanvas = this.@io.github.sidney3172.client.Chart::getNativeCanvas()();
         if(nativeCanvas != null) {
             nativeCanvas.destroy();
         }
 
-        var options = this.@io.github.sidney3172.client.ChartWithOptions::constructOptions()();
+        var options = this.@io.github.sidney3172.client.Chart::constructOptions()();
         nativeCanvas = new $wnd.Chart(canvas.getContext("2d")).Line(data,options);
-        this.@io.github.sidney3172.client.ChartWithOptions::setNativeCanvas(Lcom/google/gwt/core/client/JavaScriptObject;)(nativeCanvas);
+        this.@io.github.sidney3172.client.Chart::setNativeCanvas(Lcom/google/gwt/core/client/JavaScriptObject;)(nativeCanvas);
 	}-*/;
 
 	@Override

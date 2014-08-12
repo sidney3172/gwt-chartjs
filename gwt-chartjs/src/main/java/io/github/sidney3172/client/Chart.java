@@ -13,7 +13,10 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.SimplePanel;
 import io.github.sidney3172.client.event.*;
-import io.github.sidney3172.client.options.animation.AnimationOptions;
+import io.github.sidney3172.client.options.ChartOption;
+import io.github.sidney3172.client.options.animation.AnimationCallback;
+import io.github.sidney3172.client.options.animation.HasAnimation;
+import io.github.sidney3172.client.options.animation.Type;
 import io.github.sidney3172.client.resources.ChartStyle;
 import io.github.sidney3172.client.resources.Resources;
 
@@ -23,10 +26,13 @@ import io.github.sidney3172.client.resources.Resources;
  * @author sidney3172
  *
  */
-public abstract class Chart extends SimplePanel implements HasAnimationCompleteHandlers, HasClickHandlers, HasDataSelectionEventHandlers{
+public abstract class Chart extends SimplePanel implements HasAnimationCompleteHandlers, HasClickHandlers,HasAnimation, HasDataSelectionEventHandlers{
 
-	private static Resources resources;
 
+
+    private static Resources resources;
+
+    protected ChartOption options = ChartOption.get();
     protected JavaScriptObject nativeCanvas;
 	private CanvasElement canvas;
 	protected ChartStyle style;
@@ -189,5 +195,53 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
     protected void setNativeCanvas(JavaScriptObject object){
         this.nativeCanvas = object;
         processEvents(object);
+    }
+
+    /**
+     * Specify should chart be animated or not
+     * Default value is <code>true</code>
+     * @param enabled
+     */
+    public void setAnimationEnabled(boolean enabled){
+        if(!enabled) //"animation" : false interpreted by chart.js as "true"
+            options.clearProperty(ANIMATION);
+        else
+            options.setProperty(ANIMATION, enabled);
+    }
+
+    /**
+     * Specify animation easing
+     * Default value is {@link io.github.sidney3172.client.options.animation.Type#EASE_OUT_QUART}
+     * @param type
+     */
+    public void setAnimationType(Type type){
+        if(type == null)
+            options.clearProperty(ANIMATION_EASING);
+        else
+            options.setProperty(ANIMATION_EASING, type.getValue());
+    }
+
+    /**
+     * Add animation callback to handle animation state changes
+     * @param callback
+     */
+    public void addAnimationCallback(AnimationCallback callback){
+        //TODO implement me
+    }
+
+    @Override
+    public void setAnimationSteps(int steps) {
+        if(steps <= 0)
+            throw new IndexOutOfBoundsException("Number of animation steps should be positive. Found '"+steps+"'");
+
+        options.setProperty(ANIMATION_STEPS, steps);
+    }
+
+    /**
+     * Method returns custom options for chart
+     * @return
+     */
+    protected JavaScriptObject constructOptions(){
+        return options;
     }
 }

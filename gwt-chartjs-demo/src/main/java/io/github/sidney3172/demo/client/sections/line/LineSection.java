@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import io.github.sidney3172.client.LineChart;
 import io.github.sidney3172.client.event.DataSelectionEvent;
+import io.github.sidney3172.client.options.animation.Type;
 import io.github.sidney3172.client.options.legend.LegendOption;
 import io.github.sidney3172.demo.client.TestAreaChartDataProvider;
 
@@ -28,9 +29,11 @@ public class LineSection extends Composite{
 		initWidget(uiBinder.createAndBindUi(this));
         provider = new TestAreaChartDataProvider();
 		lineChart.setDataProvider(provider);
+        lineChart.setAnimationEnabled(false);
+        lineChart.setAnimationSteps(150);
         LegendOption legend = LegendOption.get();
         legend.setLegendTemplate("<ul class=\\\"<%=name.toLowerCase()%>-legend\\\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\\\"background-color:<%=datasets[i].lineColor%>\\\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>");
-        lineChart.addOption(legend);
+//        lineChart.addOption(legend);
 	}
 
     @UiHandler("lineChart")
@@ -40,13 +43,13 @@ public class LineSection extends Composite{
 
     @UiHandler("lineChart")
     protected void onClick(ClickEvent event){
-//        lineChart.update();
-        Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
-            @Override
-            public void execute() {
-                GWT.log(lineChart.getLegend());
-            }
-        });
+        lineChart.update();
+//        Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+//            @Override
+//            public void execute() {
+//                GWT.log(lineChart.getLegend());
+//            }
+//        });
 
     }
 }

@@ -8,7 +8,7 @@ import io.github.sidney3172.client.data.PieChartDataProvider;
 import io.github.sidney3172.client.data.Series;
 
 
-public class PieChart extends ChartWithOptions {
+public class PieChart extends Chart {
 	
 	private PieChartDataProvider provider;
 	
@@ -18,15 +18,15 @@ public class PieChart extends ChartWithOptions {
 	}
 	
 	private native void drawPie(JavaScriptObject data)/*-{
-        canvas = this.@io.github.sidney3172.client.ChartWithOptions::getNativeElement()();
-        nativeCanvas = this.@io.github.sidney3172.client.ChartWithOptions::getNativeCanvas()();
+        canvas = this.@io.github.sidney3172.client.Chart::getNativeElement()();
+        nativeCanvas = this.@io.github.sidney3172.client.Chart::getNativeCanvas()();
         if(nativeCanvas != null) {
             nativeCanvas.destroy();
         }
 
-        options = this.@io.github.sidney3172.client.ChartWithOptions::constructOptions()();
+        options = this.@io.github.sidney3172.client.Chart::constructOptions()();
         nativeCanvas = new $wnd.Chart(canvas.getContext("2d")).Pie(data,options);
-        this.@io.github.sidney3172.client.ChartWithOptions::setNativeCanvas(Lcom/google/gwt/core/client/JavaScriptObject;)(nativeCanvas);
+        this.@io.github.sidney3172.client.Chart::setNativeCanvas(Lcom/google/gwt/core/client/JavaScriptObject;)(nativeCanvas);
 	}-*/;
 
 	@Override

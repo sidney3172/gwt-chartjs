@@ -1,15 +1,12 @@
 package io.github.sidney3172.client;
 
-import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import io.github.sidney3172.client.data.AreaChartData;
 import io.github.sidney3172.client.data.AreaChartDataProvider;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
-
-public class BarChart extends ChartWithOptions {
+public class BarChart extends Chart {
 	
 	private AreaChartDataProvider provider;
 	
@@ -20,15 +17,15 @@ public class BarChart extends ChartWithOptions {
 	}
 	
 	private native void drawBar(JavaScriptObject data)/*-{
-        canvas = this.@io.github.sidney3172.client.ChartWithOptions::getNativeElement()();
-        nativeCanvas = this.@io.github.sidney3172.client.ChartWithOptions::getNativeCanvas()();
+        canvas = this.@io.github.sidney3172.client.Chart::getNativeElement()();
+        nativeCanvas = this.@io.github.sidney3172.client.Chart::getNativeCanvas()();
         if(nativeCanvas != null) {
             nativeCanvas.destroy();
         }
 
-        var options = this.@io.github.sidney3172.client.ChartWithOptions::constructOptions()();
+        var options = this.@io.github.sidney3172.client.Chart::constructOptions()();
         nativeCanvas = new $wnd.Chart(canvas.getContext("2d")).Bar(data, options);
-        this.@io.github.sidney3172.client.ChartWithOptions::setNativeCanvas(Lcom/google/gwt/core/client/JavaScriptObject;)(nativeCanvas);
+        this.@io.github.sidney3172.client.Chart::setNativeCanvas(Lcom/google/gwt/core/client/JavaScriptObject;)(nativeCanvas);
 	}-*/;
 
 	@Override
