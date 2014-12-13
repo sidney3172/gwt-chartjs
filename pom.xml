@@ -10,7 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<gwt.version>2.3.0</gwt.version>
+		<gwt.version>2.6.1</gwt.version>
 	</properties>
 	
 	<name>gwt-chartjs-root</name>
