@@ -8,7 +8,7 @@ import io.github.sidney3172.client.data.PieChartDataProvider;
 import io.github.sidney3172.client.data.Series;
 
 
-public class PieChart extends Chart {
+public class PieChart extends ChartWithScale {
 	
 	private PieChartDataProvider provider;
 	
@@ -17,18 +17,23 @@ public class PieChart extends Chart {
 		reload();
 	}
 	
-	private native JavaScriptObject drawPie(Element canvas, JavaScriptObject data, JavaScriptObject nativeCanvas)/*-{
-        if(nativeCanvas != null)
+	private native void drawPie(JavaScriptObject data)/*-{
+        canvas = this.@io.github.sidney3172.client.Chart::getNativeElement()();
+        nativeCanvas = this.@io.github.sidney3172.client.Chart::getNativeCanvas()();
+        if(nativeCanvas != null) {
             nativeCanvas.destroy();
+        }
 
-        return new $wnd.Chart(canvas.getContext("2d")).Pie(data);
+        options = this.@io.github.sidney3172.client.Chart::constructOptions()();
+        nativeCanvas = new $wnd.Chart(canvas.getContext("2d")).Pie(data,options);
+        this.@io.github.sidney3172.client.Chart::setNativeCanvas(Lcom/google/gwt/core/client/JavaScriptObject;)(nativeCanvas);
 	}-*/;
 
 	@Override
 	public void update() {
 		if(provider == null)
 			throw new NullPointerException("PieChartDataProvider not initialized before invoking update()");
-        nativeCanvas = drawPie(canvas, provider.getData(),nativeCanvas);
+        drawPie(provider.getData());
 	}
 
 	@Override
@@ -41,7 +46,7 @@ public class PieChart extends Chart {
 			
 			@Override
 			public void onSuccess(JsArray<Series> result) {
-                nativeCanvas = drawPie(canvas, provider.getData(),nativeCanvas);
+                drawPie(provider.getData());
 			}
 			
 			@Override

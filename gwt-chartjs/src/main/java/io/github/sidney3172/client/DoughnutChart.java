@@ -1,15 +1,13 @@
 package io.github.sidney3172.client;
 
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import io.github.sidney3172.client.data.PieChartDataProvider;
 import io.github.sidney3172.client.data.Series;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
-
-public class DoughnutChart extends Chart {
+public class DoughnutChart extends ChartWithScale {
 	
 	private PieChartDataProvider provider;
 	
@@ -19,18 +17,25 @@ public class DoughnutChart extends Chart {
 		
 	}
 	
-	private native JavaScriptObject drawDoughnut(Element canvas, JavaScriptObject data, JavaScriptObject nativeCanvas)/*-{
-        if(nativeCanvas != null)
+	private native void drawDoughnut(JavaScriptObject data)/*-{
+        canvas = this.@io.github.sidney3172.client.Chart::getNativeElement()();
+        nativeCanvas = this.@io.github.sidney3172.client.Chart::getNativeCanvas()();
+        if(nativeCanvas != null) {
             nativeCanvas.destroy();
+        }
 
-		return new $wnd.Chart(canvas.getContext("2d")).Doughnut(data);
+        var options = this.@io.github.sidney3172.client.Chart::constructOptions()();
+        nativeCanvas = new $wnd.Chart(canvas.getContext("2d")).Doughnut(data, options);
+        this.@io.github.sidney3172.client.Chart::setNativeCanvas(Lcom/google/gwt/core/client/JavaScriptObject;)(nativeCanvas);
+
+
 	}-*/;
 
 	@Override
 	public void update() {
 		if(provider == null)
 			throw new NullPointerException("PieCharDataProvider is not initialized before invoking update()");
-		nativeCanvas = drawDoughnut(canvas, provider.getData(),nativeCanvas);
+		drawDoughnut(provider.getData());
 	}
 
 	@Override
@@ -43,7 +48,7 @@ public class DoughnutChart extends Chart {
 			
 			@Override
 			public void onSuccess(JsArray<Series> result) {
-                nativeCanvas = drawDoughnut(canvas, result, nativeCanvas);
+                drawDoughnut(result);
 			}
 			
 			@Override

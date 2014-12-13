@@ -1,15 +1,12 @@
 package io.github.sidney3172.client;
 
-import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import io.github.sidney3172.client.data.AreaChartData;
 import io.github.sidney3172.client.data.AreaChartDataProvider;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
-
-public class BarChart extends Chart {
+public class BarChart extends ChartWithScale {
 	
 	private AreaChartDataProvider provider;
 	
@@ -19,20 +16,23 @@ public class BarChart extends Chart {
 		
 	}
 	
-	private native JavaScriptObject drawBar(Element canvas, JavaScriptObject data, JavaScriptObject nativeCanvas)/*-{
+	private native void drawBar(JavaScriptObject data)/*-{
+        canvas = this.@io.github.sidney3172.client.Chart::getNativeElement()();
+        nativeCanvas = this.@io.github.sidney3172.client.Chart::getNativeCanvas()();
         if(nativeCanvas != null) {
             nativeCanvas.destroy();
         }
 
-        nativeCanvas = new $wnd.Chart(canvas.getContext("2d")).Bar(data);
-        return nativeCanvas;
+        var options = this.@io.github.sidney3172.client.Chart::constructOptions()();
+        nativeCanvas = new $wnd.Chart(canvas.getContext("2d")).Bar(data, options);
+        this.@io.github.sidney3172.client.Chart::setNativeCanvas(Lcom/google/gwt/core/client/JavaScriptObject;)(nativeCanvas);
 	}-*/;
 
 	@Override
 	public void update() {
 		if(provider == null)
 			throw new NullPointerException("PieCharDataProvider is not specified before invoking update()");
-        nativeCanvas = drawBar(canvas, provider.getData(), nativeCanvas);
+        drawBar(provider.getData());
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class BarChart extends Chart {
 			
 			@Override
 			public void onSuccess(AreaChartData result) {
-                nativeCanvas = drawBar(canvas, result, nativeCanvas);
+                drawBar(result);
 			}
 			
 			@Override

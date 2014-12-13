@@ -45,6 +45,14 @@ public class AreaSeries extends JavaScriptObject{
 		return this.data;
 	}-*/;
 
+    public final native void setLabel(String label)/*-{
+        this.label = label;
+    }-*/;
+
+    public final native String getLabel()/*-{
+        return this.label;
+    }-*/;
+
 	public final void setData(double[] data){
 		JsArrayNumber array = JsArrayNumber.createArray().cast();
 		for(double str : data)

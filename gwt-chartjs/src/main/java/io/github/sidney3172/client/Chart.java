@@ -12,10 +12,12 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.SimplePanel;
 import io.github.sidney3172.client.event.*;
-import io.github.sidney3172.client.options.animation.AnimationOptions;
-import io.github.sidney3172.client.options.animation.HasAnimation;
+import io.github.sidney3172.client.options.*;
 import io.github.sidney3172.client.resources.ChartStyle;
 import io.github.sidney3172.client.resources.Resources;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Base class for all chart widgets<br/>
@@ -23,16 +25,15 @@ import io.github.sidney3172.client.resources.Resources;
  * @author sidney3172
  *
  */
-public abstract class Chart extends SimplePanel implements HasAnimationCompleteHandlers, HasAnimation, HasClickHandlers, HasDataSelectionEventHandlers{
+public abstract class Chart extends SimplePanel implements HasAnimationCompleteHandlers, HasClickHandlers,HasAnimation, HasDataSelectionEventHandlers, IsResponsive{
 
-	private static Resources resources;
-	
-	private boolean animationEnabled = true;
-	protected AnimationOptions animationOptions;
+    private static Resources resources;
 
+    protected ChartOption options = ChartOption.get();
     protected JavaScriptObject nativeCanvas;
-	protected CanvasElement canvas;
+	private CanvasElement canvas;
 	protected ChartStyle style;
+    protected List<AnimationCallback> callbackList = new ArrayList<AnimationCallback>();
 	
 	
 	static{
@@ -45,6 +46,7 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 	 */
 	public Chart(ChartStyle style){
 		setChartStyle(style);
+        registerNativeAnimationHandlers();
 		canvas = Document.get().createCanvasElement();
 		getElement().appendChild(canvas);
         sinkEvents(Event.ONCLICK);
@@ -147,11 +149,6 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
 	public void addAnimationCompleteHandler(AnimationCompleteHandler handler) {
 		addHandler(handler, AnimationCompleteEvent.getType());
 	}
-	
-	@Override
-	public void setAnimationEnabled(boolean enable) {
-		
-	}
 
     /**
      * Creates snapshot of current state of chart as image
@@ -170,18 +167,6 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
             return nativeCanvas.toBase64Image();
         return null;
     }-*/;
-	
-	@Override
-	public boolean isAnimationEnabled() {
-		return animationEnabled;
-	}
-	
-	@Override
-	public void setAnimationOptions(AnimationOptions options) {
-		this.animationOptions = options;
-		if(animationEnabled && animationOptions == null)
-			animationOptions = new AnimationOptions();
-	}
 
     @Override
     /**
@@ -197,4 +182,110 @@ public abstract class Chart extends SimplePanel implements HasAnimationCompleteH
     public HandlerRegistration addDataSelectionHandler(DataSelectionHandler handler) {
         return addHandler(handler, DataSelectionEvent.getType());
     }
+
+    protected JavaScriptObject getNativeCanvas(){
+        return nativeCanvas;
+    }
+
+    protected CanvasElement getNativeElement(){
+        return canvas;
+    }
+
+    protected void setNativeCanvas(JavaScriptObject object){
+        this.nativeCanvas = object;
+        processEvents(object);
+    }
+
+    /**
+     * Specify should chart be animated or not
+     * Default value is <code>true</code>
+     * @param enabled
+     */
+    public void setAnimationEnabled(boolean enabled){
+        if(!enabled) //"animation" : false interpreted by chart.js as "true"
+            options.clearProperty(ANIMATION);
+        else
+            options.setProperty(ANIMATION, enabled);
+    }
+
+    /**
+     * Specify animation easing
+     * Default value is {@link io.github.sidney3172.client.options.Type#EASE_OUT_QUART}
+     * @param type
+     */
+    public void setAnimationType(Type type){
+        if(type == null)
+            options.clearProperty(ANIMATION_EASING);
+        else
+            options.setProperty(ANIMATION_EASING, type.getValue());
+    }
+
+    /**
+     * Add animation callback to handle animation state changes
+     * @param callback
+     */
+    public void addAnimationCallback(AnimationCallback callback){
+        if(callback != null)
+            callbackList.add(callback);
+    }
+
+    @Override
+    public void setAnimationSteps(int steps) {
+        if(steps <= 0)
+            throw new IndexOutOfBoundsException("Number of animation steps should be positive. Found '"+steps+"'");
+
+        options.setProperty(ANIMATION_STEPS, steps);
+    }
+
+    /**
+     * Method returns custom options for chart
+     * @return
+     */
+    protected JavaScriptObject constructOptions(){
+        return options;
+    }
+
+    protected native void registerNativeAnimationHandlers()/*-{
+        options = this.@io.github.sidney3172.client.Chart::constructOptions()();
+        self = this;
+        options.onAnimationProgress = function(progress){
+            self.@io.github.sidney3172.client.Chart::onAnimationProgress(D)(progress);
+            return;
+        }
+        options.onAnimationComplete = function(){
+            self.@io.github.sidney3172.client.Chart::onAnimationComplete()();
+            return;
+        }
+    }-*/;
+
+    protected void onAnimationProgress(double progress){
+        for(AnimationCallback callback : callbackList){
+            if(callback != null)
+                callback.onProgress(progress);
+        }
+    }
+
+    protected void onAnimationComplete(){
+        for(AnimationCallback callback : callbackList){
+            if(callback != null)
+                callback.onAnimationComplete();
+        }
+    }
+
+    @Override
+    public void setResponsive(boolean responsive){
+        if(!responsive)
+            options.clearProperty(RESPONSIVE);
+        else
+            options.setProperty(RESPONSIVE, true);
+    }
+
+    @Override
+    public void setMaintainAspectRatio(boolean aspectRatio){
+        if(!aspectRatio)
+            options.clearProperty(MAINTAIN_ASPECT_RATIO);
+        else
+            options.setProperty(MAINTAIN_ASPECT_RATIO, true);
+    }
+
 }
