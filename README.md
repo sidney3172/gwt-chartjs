@@ -15,3 +15,6 @@ This project released and available in Maven Central:
 </dependency>
 ```
 Sample demo available on <a href="http://sidney3172.github.io/gwt-chartjs/">GitHub Pages</a>
+
+
+[License](LICENSE.txt)
